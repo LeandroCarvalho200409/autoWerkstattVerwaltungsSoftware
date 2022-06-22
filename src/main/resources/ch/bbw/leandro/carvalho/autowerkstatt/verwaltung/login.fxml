@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="545.0" prefWidth="600.0" style="-fx-background-color: #ffffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.LoginController">
+   <children>
+      <AnchorPane layoutX="118.0" layoutY="199.0" prefHeight="304.0" prefWidth="365.0" style="-fx-background-color: #3517fc;">
+         <children>
+            <HBox layoutX="34.0" layoutY="48.0" prefHeight="40.0" prefWidth="300.0">
+               <children>
+                  <Label prefHeight="40.0" prefWidth="96.0" text="Username: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameField" prefHeight="40.0" prefWidth="206.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="34.0" layoutY="112.0" prefHeight="40.0" prefWidth="300.0">
+               <children>
+                  <Label prefHeight="41.0" prefWidth="96.0" text="Password: " textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="pwdField" prefHeight="40.0" prefWidth="206.0" />
+               </children>
+            </HBox>
+            <Button fx:id="loginButton" layoutX="155.0" layoutY="198.0" mnemonicParsing="false" onAction="#loginHandler" text="Login" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="93.0" layoutY="79.0" text="Autowerkstattverwaltung" textFill="#3517fc">
+         <font>
+            <Font name="Arial Bold" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
