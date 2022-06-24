@@ -3,24 +3,34 @@ package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class HelloController extends NavigationController implements Initializable {
     @FXML
     private Label welcomeText;
 
     @FXML
     private VBox vBoxCarsPendent;
 
+    @FXML
+    private VBox vBoxCarsOnSale;
+
+    private HelloApplication helloApplication;
+
     public void initialize(URL url, ResourceBundle resourceBundle){
         renderCarsPendent();
+        renderCarsOnSale();
     }
 
     @FXML
@@ -29,7 +39,50 @@ public class HelloController implements Initializable {
     }
 
     public void auftragVerwalten(Auftrag auftrag){
+        System.out.println("auftragVerwalten");
+    }
 
+    public void verkaufsfahrzeugVerwalten(Verkaufsfahrzeug verkaufsfahrzeug){
+
+    }
+
+    public void renderCarsOnSale(){
+        Autogarage autogarage = new Autogarage("Test");
+        autogarage.getData();
+        for(Fahrzeug f:autogarage.getFahrzeuge()){
+            if(f instanceof Verkaufsfahrzeug){
+                Verkaufsfahrzeug verkaufsfahrzeug = (Verkaufsfahrzeug) f;
+                if(verkaufsfahrzeug.isVerkauft() == false){
+                    HBox hBox = new HBox();
+                    Label auto = new Label("Auto: "+verkaufsfahrzeug.getMarke()+" "+verkaufsfahrzeug.getModell());
+                    Label jahrgang = new Label("Jahrgang: "+verkaufsfahrzeug.getErsteInverkehrssetzung().getYear());
+                    Label preis = new Label("Verlangter Preis: CHF "+verkaufsfahrzeug.getPreis());
+                    auto.setPrefWidth(300);
+                    auto.setPrefHeight(50);
+                    jahrgang.setPrefWidth(150);
+                    jahrgang.setPrefHeight(50);
+                    preis.setPrefWidth(100);
+                    preis.setPrefHeight(50);
+                    hBox.getChildren().add(auto);
+                    hBox.getChildren().add(jahrgang);
+                    hBox.getChildren().add(preis);
+
+                    Button verwalten = new Button(">");
+                    verwalten.getStyleClass().add("verwaltenButton");
+                    verwalten.setPrefHeight(50);
+                    verwalten.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            verkaufsfahrzeugVerwalten(verkaufsfahrzeug);
+                        }
+                    });
+                    hBox.getChildren().add(verwalten);
+                    hBox.setPrefWidth(vBoxCarsPendent.getPrefWidth());
+                    hBox.setPrefHeight(50);
+                    vBoxCarsOnSale.getChildren().add(hBox);
+                }
+            }
+        }
     }
 
     public void renderCarsPendent(){
@@ -65,8 +118,8 @@ public class HelloController implements Initializable {
                 hBox.getChildren().add(status);
 
                 Button verwalten = new Button(">");
+                verwalten.getStyleClass().add("verwaltenButton");
                 verwalten.setPrefHeight(50);
-                verwalten.setStyle("-fx-background-color:  #ffffffff; ");
                 verwalten.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
@@ -80,9 +133,4 @@ public class HelloController implements Initializable {
             }
         }
     }
-
-    public void logout(){
-
-    }
-
 }

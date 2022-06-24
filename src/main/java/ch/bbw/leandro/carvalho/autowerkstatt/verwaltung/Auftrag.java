@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Auftrag {
+    private int auftragNr;
     private Fahrzeug fahrzeug;
     private ArrayList<Ersatzteil> ersatzteile;
     private String art;
@@ -14,7 +15,8 @@ public class Auftrag {
     private ArrayList<Mitarbeiter> zustaendigeMitarbeiter;
     private Mitarbeiter verantwortlicheMitarbeiter;
 
-    public Auftrag(Fahrzeug fahrzeug, String art, int preis, String status, LocalDate zuErledigenBis, Mitarbeiter verantwortlicheMitarbeiter) {
+    public Auftrag(int auftragNr ,Fahrzeug fahrzeug, String art, int preis, String status, LocalDate zuErledigenBis, Mitarbeiter verantwortlicheMitarbeiter) {
+        this.auftragNr = auftragNr;
         this.fahrzeug = fahrzeug;
         this.art = art;
         this.preis = preis;
@@ -24,6 +26,10 @@ public class Auftrag {
         this.ersatzteile = new ArrayList<>();
         this.gebieteDesFahrzeuges = new ArrayList<>();
         this.zustaendigeMitarbeiter = new ArrayList<>();
+    }
+
+    public int getAuftragNr() {
+        return auftragNr;
     }
 
     public Fahrzeug getFahrzeug() {

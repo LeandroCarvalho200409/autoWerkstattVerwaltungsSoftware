@@ -302,6 +302,7 @@ public class Autogarage {
 
             for (Auftrag a:auftraege) {
                 JSONObject auftrag = new JSONObject();
+                auftrag.put("auftragsNr", a.getAuftragNr());
                 auftrag.put("fahrzeug", a.getFahrzeug().getVehicleIdentificationNumber());
                 JSONArray ersatzteileJSON = new JSONArray();
                 for (Ersatzteil e:a.getErsatzteile()) {
@@ -417,7 +418,7 @@ public class Autogarage {
                     }
                 }
 
-                Auftrag auftrag = new Auftrag(fahrzeugAuftrag, auftragJSON.getString("art"), auftragJSON.getInt("preis"), auftragJSON.getString("status"), LocalDate.of(zuErledigenBisJSONArray.getInt(0), zuErledigenBisJSONArray.getInt(1), zuErledigenBisJSONArray.getInt(2)), zustaendigMitarbeiter);
+                Auftrag auftrag = new Auftrag(auftragJSON.getInt("auftragsNr") ,fahrzeugAuftrag, auftragJSON.getString("art"), auftragJSON.getInt("preis"), auftragJSON.getString("status"), LocalDate.of(zuErledigenBisJSONArray.getInt(0), zuErledigenBisJSONArray.getInt(1), zuErledigenBisJSONArray.getInt(2)), zustaendigMitarbeiter);
 
                 for (Object s:zustaendigeMitarbeiter) {
                     String string = (String) s;

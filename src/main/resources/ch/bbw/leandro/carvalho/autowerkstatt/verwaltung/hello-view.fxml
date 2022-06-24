@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1286.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.HelloController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1286.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.HelloController">
    <children>
       <VBox prefHeight="800.0" prefWidth="250.0" style="-fx-background-color: #3517fc;">
          <children>
@@ -17,59 +17,103 @@
                         <Image url="@images/user.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="logoutButton" layoutX="89.0" layoutY="155.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="71.0" style="-fx-background-color: #3517fc;" text="Logout" textFill="#f8f7f7">
+                  <Button fx:id="logoutButton" layoutX="89.0" layoutY="155.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="71.0" styleClass="logoutButton" text="Logout" textFill="#f8f7f7">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Button>
                </children>
             </AnchorPane>
-            <Button fx:id="homeNavButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #230ac9;" text="Home" textFill="#f8f7f7">
+            <Button fx:id="homeNavButton" mnemonicParsing="false" onAction="#openHome" prefHeight="60.0" prefWidth="250.0" text="Home" textFill="#f8f7f7">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="currentSection" />
+                  <String fx:value="sectionText" />
+               </styleClass>
             </Button>
-            <Button fx:id="mitarbeiterNavButton" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #3517fc;" text="Mitarbeiter" textFill="#f8f7f7">
+            <Button fx:id="mitarbeiterNavButton" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" onAction="#openMitarbeiter" prefHeight="60.0" prefWidth="250.0" text="Mitarbeiter" textFill="#f8f7f7">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="section" />
+                  <String fx:value="sectionText" />
+               </styleClass>
             </Button>
-            <Button fx:id="kundenNavButton" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #3517fc;" text="Kunden" textFill="#f8f7f7">
+            <Button fx:id="kundenNavButton" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onAction="#openKunden" prefHeight="60.0" prefWidth="250.0" text="Kunden" textFill="#f8f7f7">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="section" />
+                  <String fx:value="sectionText" />
+               </styleClass>
             </Button>
-            <Button fx:id="auftraegeNavButton" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #3517fc;" text="Aufträge" textFill="#f8f7f7">
+            <Button fx:id="auftraegeNavButton" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" onAction="#openAuftraege" prefHeight="60.0" prefWidth="250.0" text="Aufträge" textFill="#f8f7f7">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="section" />
+                  <String fx:value="sectionText" />
+               </styleClass>
             </Button>
-            <Button fx:id="fahrzeugeNavButton" layoutX="10.0" layoutY="390.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="250.0" style="-fx-background-color: #3517fc;" text="Fahrzeuge" textFill="#f8f7f7">
+            <Button fx:id="fahrzeugeNavButton" layoutX="10.0" layoutY="390.0" mnemonicParsing="false" onAction="#openFahrzeuge" prefHeight="60.0" prefWidth="250.0" text="Fahrzeuge" textFill="#f8f7f7">
                <font>
                   <Font name="Arial Black" size="18.0" />
                </font>
+               <styleClass>
+                  <String fx:value="section" />
+                  <String fx:value="sectionText" />
+               </styleClass>
+            </Button>
+            <Button fx:id="fahrzeugeNavButton1" layoutX="10.0" layoutY="450.0" mnemonicParsing="false" onAction="#openErsatzteile" prefHeight="60.0" prefWidth="250.0" text="Ersatzteile" textFill="#f8f7f7">
+               <font>
+                  <Font name="Arial Black" size="18.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="section" />
+                  <String fx:value="sectionText" />
+               </styleClass>
             </Button>
          </children></VBox>
       <AnchorPane prefHeight="765.0" prefWidth="1041.0" style="-fx-background-color: #ffffffff;">
          <children>
             <ScrollPane layoutX="75.0" layoutY="176.0" prefHeight="159.0" prefWidth="878.0">
-              <content>
-                <AnchorPane fx:id="anchor" minHeight="0.0" minWidth="0.0" prefHeight="311.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;">
+               <content>
+                  <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
                      <children>
-                        <Label layoutX="19.0" layoutY="22.0" text="Fahrzeuge in Auftrag" textFill="#3517fc">
+                        <Label text="Fahrzeuge in Auftrag" textFill="#3517fc">
                            <font>
                               <Font name="Arial Black" size="24.0" />
                            </font>
                         </Label>
-                        <VBox fx:id="vBoxCarsPendent" layoutX="14.0" layoutY="59.0" prefHeight="246.0" prefWidth="840.0" style="-fx-background-color: #ffffffff;" />
-                     </children></AnchorPane>
-              </content>
+                        <VBox fx:id="vBoxCarsPendent" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
+                     </children>
+                  </VBox>
+               </content>
             </ScrollPane>
             <Label layoutX="481.0" layoutY="79.0" text="Home" textFill="#3517fc">
                <font>
                   <Font name="Arial Black" size="24.0" />
                </font>
             </Label>
+            <ScrollPane layoutX="81.0" layoutY="394.0" prefHeight="159.0" prefWidth="878.0">
+               <content>
+                  <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label text="Zu verkaufende Fahrzeuge" textFill="#3517fc">
+                           <font>
+                              <Font name="Arial Black" size="24.0" />
+                           </font>
+                        </Label>
+                        <VBox fx:id="vBoxCarsOnSale" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
+                     </children>
+                  </VBox>
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>

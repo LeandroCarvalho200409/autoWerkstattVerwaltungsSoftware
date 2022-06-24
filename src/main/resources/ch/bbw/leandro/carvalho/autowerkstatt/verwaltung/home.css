@@ -1,0 +1,36 @@
+.verwaltenButton {
+    -fx-background-color: #ffffff;
+}
+
+.verwaltenButton:hover {
+    -fx-background-color: #e3e2e1;
+}
+
+.currentSection {
+    -fx-background-color: #230ac9;
+}
+
+.currentSection:hover {
+    -fx-background-color: #220cb0;
+}
+
+.section {
+    -fx-background-color:  #3517fc;
+}
+
+.section:hover {
+    -fx-background-color: #2a11d4;
+}
+
+.sectionText {
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 18px;
+}
+
+.logoutButton {
+    -fx-background-color: #3517fc;
+}
+
+.logoutButton:hover {
+    -fx-text-fill: #1653e0;
+}

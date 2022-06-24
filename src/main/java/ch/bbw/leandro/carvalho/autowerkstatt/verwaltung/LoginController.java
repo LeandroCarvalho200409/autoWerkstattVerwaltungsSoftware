@@ -28,6 +28,8 @@ public class LoginController {
                 Stage stage = helloApplication.getStage();
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
+                String css = this.getClass().getResource("home.css").toExternalForm();
+                scene.getStylesheets().add(css);
                 stage.close();
                 stage.setScene(scene);
                 stage.setTitle("Home");
