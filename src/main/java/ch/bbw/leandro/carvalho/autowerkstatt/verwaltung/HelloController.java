@@ -18,9 +18,6 @@ import java.util.ResourceBundle;
 
 public class HelloController extends NavigationController implements Initializable {
     @FXML
-    private Label welcomeText;
-
-    @FXML
     private VBox vBoxCarsPendent;
 
     @FXML
@@ -33,13 +30,26 @@ public class HelloController extends NavigationController implements Initializab
         renderCarsOnSale();
     }
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
-
     public void auftragVerwalten(Auftrag auftrag){
-        System.out.println("auftragVerwalten");
+        try {
+            Autogarage autogarage = new Autogarage("Test");
+            autogarage.getData();
+            Stage stage = helloApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftraege_verwaltung.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            AuftraegeVerwaltungController controller = fxmlLoader.getController();
+            controller.setAuftrag(auftrag);
+            controller.fillupData();
+            String css = this.getClass().getResource("home.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.close();
+            stage.setScene(scene);
+            stage.setTitle("Aufträge | Verwaltung");
+            stage.setResizable(false);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void verkaufsfahrzeugVerwalten(Verkaufsfahrzeug verkaufsfahrzeug){

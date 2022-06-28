@@ -29,7 +29,7 @@
                         <Font name="Arial Black" size="18.0" />
                     </font>
                     <styleClass>
-                        <String fx:value="currentSection" />
+                        <String fx:value="section" />
                         <String fx:value="sectionText" />
                     </styleClass>
                 </Button>
@@ -38,7 +38,7 @@
                         <Font name="Arial Black" size="18.0" />
                     </font>
                     <styleClass>
-                        <String fx:value="section" />
+                        <String fx:value="currentSection" />
                         <String fx:value="sectionText" />
                     </styleClass>
                 </Button>

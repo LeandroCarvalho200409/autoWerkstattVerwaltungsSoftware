@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1286.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.KundenController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1286.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.FahrzeugeController">
     <children>
         <VBox prefHeight="800.0" prefWidth="250.0" style="-fx-background-color: #3517fc;">
             <children>
@@ -47,7 +47,7 @@
                         <Font name="Arial Black" size="18.0" />
                     </font>
                     <styleClass>
-                        <String fx:value="currentSection" />
+                        <String fx:value="section" />
                         <String fx:value="sectionText" />
                     </styleClass>
                 </Button>
@@ -65,7 +65,7 @@
                         <Font name="Arial Black" size="18.0" />
                     </font>
                     <styleClass>
-                        <String fx:value="section" />
+                        <String fx:value="currentSection" />
                         <String fx:value="sectionText" />
                     </styleClass>
                 </Button>
@@ -100,20 +100,25 @@
                         <Font name="Arial Black" size="24.0" />
                     </font>
                 </Label>
-                <ScrollPane layoutX="81.0" layoutY="394.0" prefHeight="159.0" prefWidth="878.0">
-                    <content>
-                        <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
-                            <children>
-                                <Label text="Zu verkaufende Fahrzeuge" textFill="#3517fc">
-                                    <font>
-                                        <Font name="Arial Black" size="24.0" />
-                                    </font>
-                                </Label>
-                                <VBox fx:id="vBoxCarsOnSale" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
-                            </children>
-                        </VBox>
-                    </content>
-                </ScrollPane>
+                <AnchorPane layoutX="75.0" layoutY="389.0" prefHeight="200.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
+                    <children>
+                        <Label layoutX="306.0" layoutY="14.0" text="Fahrzeugverwaltung" textFill="#3517fc">
+                            <font>
+                                <Font name="Arial Black" size="24.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="openVerkaufButton" layoutX="106.0" layoutY="68.0" mnemonicParsing="false" onAction="#openVerkauf" prefHeight="100.0" prefWidth="200.0" text="Fahrzeuge für den Verkauf">
+                            <font>
+                                <Font name="Arial" size="15.0" />
+                            </font>
+                        </Button>
+                        <Button fx:id="openKundenFZButton" layoutX="573.0" layoutY="68.0" mnemonicParsing="false" onAction="#openKundenFZ" prefHeight="100.0" prefWidth="200.0" text="Fahrzeuge von Kunden">
+                            <font>
+                                <Font name="Arial" size="15.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
             </children>
         </AnchorPane>
     </children>

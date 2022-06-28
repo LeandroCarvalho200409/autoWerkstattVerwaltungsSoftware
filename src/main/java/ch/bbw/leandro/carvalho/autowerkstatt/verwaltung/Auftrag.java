@@ -48,6 +48,22 @@ public class Auftrag {
         this.ersatzteile = ersatzteile;
     }
 
+    public void setErsatzteil(Ersatzteil ersatzteil){
+        boolean ersatzteilGleich = false;
+        for (Ersatzteil e:ersatzteile) {
+            if(e.getProduktNr() == ersatzteil.getProduktNr()){
+                ersatzteilGleich = true;
+            }
+        }
+        if(!ersatzteilGleich){
+            this.ersatzteile.add(ersatzteil);
+        }
+    }
+
+    public void removeErsatzteil(Ersatzteil ersatzteil){
+        this.ersatzteile.remove(ersatzteil);
+    }
+
     public String getArt() {
         return art;
     }
@@ -68,8 +84,24 @@ public class Auftrag {
         return gebieteDesFahrzeuges;
     }
 
+    public void removeGebietDesFahrzeuges(String gebiet){
+        this.ersatzteile.remove(gebiet);
+    }
+
     public void setGebieteDesFahrzeuges(ArrayList<String> gebieteDesFahrzeuges) {
         this.gebieteDesFahrzeuges = gebieteDesFahrzeuges;
+    }
+
+    public void setGebietDesFahrzeuges(String gebiet){
+        boolean gebietGleich = false;
+        for (String g:gebieteDesFahrzeuges) {
+            if(g.equals(gebiet)){
+                gebietGleich = true;
+            }
+        }
+        if(!gebietGleich){
+            this.gebieteDesFahrzeuges.add(gebiet);
+        }
     }
 
     public String getStatus() {
@@ -92,6 +124,10 @@ public class Auftrag {
         return zustaendigeMitarbeiter;
     }
 
+    public void removeZustaendigeMitarbeiter(Mitarbeiter mitarbeiter){
+        this.zustaendigeMitarbeiter.remove(mitarbeiter);
+    }
+
     public void setZustaendigeMitarbeiter(Mitarbeiter mitarbeiter) {
         boolean equalfound = false;
         for (Person p:zustaendigeMitarbeiter) {
@@ -102,7 +138,7 @@ public class Auftrag {
                 }
             }
         }
-        if(equalfound){
+        if(!equalfound){
             this.zustaendigeMitarbeiter.add(mitarbeiter);
         }
     }

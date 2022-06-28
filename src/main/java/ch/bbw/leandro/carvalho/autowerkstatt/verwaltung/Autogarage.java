@@ -45,7 +45,7 @@ public class Autogarage {
             for (Person p:personen) {
                 if(p instanceof Mitarbeiter){
                     Mitarbeiter vergleich = (Mitarbeiter) p;
-                    if(vergleich.getBenutzername() == mitarbeiter.getBenutzername()){
+                    if(vergleich.getBenutzername().equals(mitarbeiter.getBenutzername())){
                         equalFound = true;
                     }
                 }
@@ -55,7 +55,7 @@ public class Autogarage {
             for (Person p:personen) {
                 if(p instanceof Kunde){
                     Kunde vergleich = (Kunde) p;
-                    if(vergleich.getKundenNummer() == kunde.getKundenNummer()){
+                    if(vergleich.getKundenNummer().equals(kunde.getKundenNummer())){
                         equalFound = true;
                     }
                 }
@@ -67,13 +67,21 @@ public class Autogarage {
     }
 
     public void addAuftrag(Auftrag auftrag){
-        auftraege.add(auftrag);
+        boolean equalFound = false;
+        for (Auftrag a:auftraege) {
+            if(a.getAuftragNr() == auftrag.getAuftragNr()){
+                equalFound = true;
+            }
+        }
+        if(!equalFound){
+            auftraege.add(auftrag);
+        }
     }
 
     public void addErsatzteil(Ersatzteil ersatzteil){
         boolean equalFound = false;
         for (Ersatzteil e:ersatzteile) {
-            if(ersatzteil.getProduktNr() == e.getProduktNr()){
+            if(ersatzteil.getProduktNr().equals(e.getProduktNr())){
                 equalFound = true;
             }
         }
@@ -367,14 +375,14 @@ public class Autogarage {
                     JSONArray kundeSeit = person.getJSONArray("kundeSeit");
                     Adresse adresse1 = new Adresse(adresse.getString("strasse"), adresse.getInt("nummer"), adresse.getString("ort"), adresse.getInt("plz"));
                     Kunde kunde = new Kunde(person.getString("name"), person.getString("vorname"), LocalDate.of(geburtsDatum.getInt(0), geburtsDatum.getInt(1), geburtsDatum.getInt(2)), adresse1, person.getString("email"), person.getString("telNummer"), person.getString("kundenNummer"), LocalDate.of(kundeSeit.getInt(0), kundeSeit.getInt(1), kundeSeit.getInt(2)));
-                    personen.add(kunde);
+                    addPerson(kunde);
                 }else if(person.get("type").equals("mitarbeiter")){
                     JSONObject adresse = person.getJSONObject("adresse");
                     JSONArray geburtsDatum = person.getJSONArray("geburtsDatum");
                     JSONArray eintrittsDatum = person.getJSONArray("eintrittsDatum");
                     Adresse adresse1 = new Adresse(adresse.getString("strasse"), adresse.getInt("nummer"), adresse.getString("ort"), adresse.getInt("plz"));
                     Mitarbeiter mitarbeiter = new Mitarbeiter(person.getString("name"), person.getString("vorname"), LocalDate.of(geburtsDatum.getInt(0), geburtsDatum.getInt(1), geburtsDatum.getInt(2)), adresse1, person.getString("email"), person.getString("telNummer"), person.getString("benutzername"), person.getString("passwort"), LocalDate.of(eintrittsDatum.getInt(0), eintrittsDatum.getInt(1), eintrittsDatum.getInt(2)), person.getString("funktion"), person.getBoolean("geschaeftsfuehrer"), person.getInt("anzStunden"), person.getInt("ferienTage"));
-                    personen.add(mitarbeiter);
+                    addPerson(mitarbeiter);
                 }
             }
             for (int i=0; i<fahrzeugeJSON.length(); i++) {
@@ -384,14 +392,24 @@ public class Autogarage {
                     JSONObject besitzer = fahrzeug.getJSONObject("VerkauftAn");
                     JSONArray gekauftDate = fahrzeug.getJSONArray("gekauftDate");
                     Verkaufsfahrzeug verkaufsfahrzeug = new Verkaufsfahrzeug(fahrzeug.getString("Marke"), fahrzeug.getString("Modell"), fahrzeug.getString("Baureihe"), fahrzeug.getInt("CCM"), fahrzeug.getInt("PS"), fahrzeug.getInt("anzPlaetze"), fahrzeug.getString("Aufbau"), fahrzeug.getString("Farbe"), fahrzeug.getString("Farbencode"), fahrzeug.getString("VIN"), LocalDate.of(ersteInverkehrssetzung.getInt(0), ersteInverkehrssetzung.getInt(1), ersteInverkehrssetzung.getInt(2)), fahrzeug.getInt("Preis"), fahrzeug.getBoolean("Verkauft"), getPersonByKundenNummer(besitzer.getString("kundenNummer")), LocalDate.of(gekauftDate.getInt(0), gekauftDate.getInt(1), gekauftDate.getInt(2)));
-                    this.fahrzeuge.add(verkaufsfahrzeug);
+                    addFahrzeug(verkaufsfahrzeug);
 
                 }else if(fahrzeug.get("Type").equals("Kundenfahrzeug")){
                     JSONArray ersteInverkehrssetzung = fahrzeug.getJSONArray("ErsteInverkehrssetzung");
                     JSONObject besitzer = fahrzeug.getJSONObject("besitzer");
                     Kundenfahrzeug kundenfahrzeug = new Kundenfahrzeug(fahrzeug.getString("Marke"), fahrzeug.getString("Modell"), fahrzeug.getString("Baureihe"), fahrzeug.getInt("CCM"), fahrzeug.getInt("PS"), fahrzeug.getInt("anzPlaetze"), fahrzeug.getString("Aufbau"), fahrzeug.getString("Farbe"), fahrzeug.getString("Farbencode"), fahrzeug.getString("VIN"), LocalDate.of(ersteInverkehrssetzung.getInt(0), ersteInverkehrssetzung.getInt(1), ersteInverkehrssetzung.getInt(2)), getPersonByKundenNummer(besitzer.getString("kundenNummer")));
-                    this.fahrzeuge.add(kundenfahrzeug);
+                    addFahrzeug(kundenfahrzeug);
                 }
+            }
+            for(int i=0; i<ersatzteileJSON.length(); i++){
+                JSONObject ersatzteilJSON = ersatzteileJSON.getJSONObject(i);
+                JSONArray geeignetFuerModelle = ersatzteilJSON.getJSONArray("geeignetFuerModelle");
+                Ersatzteil ersatzteil = new Ersatzteil(ersatzteilJSON.getString("name"), ersatzteilJSON.getString("produktNr"), ersatzteilJSON.getString("anwendung"), ersatzteilJSON.getString("marke"), ersatzteilJSON.getInt("anzAufLager"), ersatzteilJSON.getDouble("preisProStueck"));
+                for (Object s:geeignetFuerModelle) {
+                    String string = (String) s;
+                    ersatzteil.addModell(string);
+                }
+                addErsatzteil(ersatzteil);
             }
             for(int i=0; i<auftraegeJSON.length(); i++){
                 JSONObject auftragJSON = auftraegeJSON.getJSONObject(i);
@@ -431,17 +449,19 @@ public class Autogarage {
                         }
                     }
                 }
-                auftraege.add(auftrag);
-            }
-            for(int i=0; i<ersatzteileJSON.length(); i++){
-                JSONObject ersatzteilJSON = ersatzteileJSON.getJSONObject(i);
-                JSONArray geeignetFuerModelle = ersatzteilJSON.getJSONArray("geeignetFuerModelle");
-                Ersatzteil ersatzteil = new Ersatzteil(ersatzteilJSON.getString("name"), ersatzteilJSON.getString("produktNr"), ersatzteilJSON.getString("anwendung"), ersatzteilJSON.getString("marke"), ersatzteilJSON.getInt("anzAufLager"), ersatzteilJSON.getDouble("preisProStueck"));
-                for (Object s:geeignetFuerModelle) {
-                    String string = (String) s;
-                    ersatzteil.addModell(string);
+                for (Object s:gebieteDesFahrzeugesJSONArray) {
+                    String gebiet = (String) s;
+                    auftrag.setGebietDesFahrzeuges(gebiet);
                 }
-                ersatzteile.add(ersatzteil);
+                for (Object s:ersatzteileJSONArray) {
+                    String produktNr = (String) s;
+                    for (Ersatzteil ersatzteil:ersatzteile) {
+                        if(ersatzteil.getProduktNr().equals(produktNr)){
+                            auftrag.setErsatzteil(ersatzteil);
+                        }
+                    }
+                }
+                addAuftrag(auftrag);
             }
         }catch (Exception e){
             System.err.println(e.getMessage());
@@ -481,5 +501,9 @@ public class Autogarage {
 
     public ArrayList<Auftrag> getAuftraege(){
         return this.auftraege;
+    }
+
+    public ArrayList<Ersatzteil> getErsatzteile(){
+        return this.ersatzteile;
     }
 }
