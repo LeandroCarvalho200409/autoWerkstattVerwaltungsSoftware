@@ -81,39 +81,30 @@
             </children></VBox>
         <AnchorPane prefHeight="765.0" prefWidth="1041.0" style="-fx-background-color: #ffffffff;">
             <children>
-                <ScrollPane layoutX="75.0" layoutY="176.0" prefHeight="159.0" prefWidth="878.0">
+                <ScrollPane layoutX="75.0" layoutY="176.0" prefHeight="578.0" prefWidth="878.0">
                     <content>
-                        <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
+                        <VBox prefHeight="557.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
                             <children>
-                                <Label text="Fahrzeuge in Auftrag" textFill="#3517fc">
-                                    <font>
-                                        <Font name="Arial Black" size="24.0" />
-                                    </font>
-                                </Label>
-                                <VBox fx:id="vBoxCarsPendent" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
+                        <AnchorPane prefHeight="71.0" prefWidth="878.0">
+                           <children>
+                                      <Label layoutX="22.0" layoutY="17.0" text="Ersatzteile" textFill="#3517fc">
+                                          <font>
+                                              <Font name="Arial Black" size="24.0" />
+                                          </font>
+                                      </Label>
+                              <Button layoutX="718.0" layoutY="20.0" mnemonicParsing="false" onAction="#ersatzteilErfassen" text="Ersatzteil erfassen" />
+                           </children>
+                        </AnchorPane>
+                                <VBox fx:id="vBoxErsatzteile" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
                             </children>
                         </VBox>
                     </content>
                 </ScrollPane>
-                <Label layoutX="481.0" layoutY="79.0" text="Home" textFill="#3517fc">
+                <Label layoutX="449.0" layoutY="79.0" text="Ersatzteile" textFill="#3517fc">
                     <font>
                         <Font name="Arial Black" size="24.0" />
                     </font>
                 </Label>
-                <ScrollPane layoutX="81.0" layoutY="394.0" prefHeight="159.0" prefWidth="878.0">
-                    <content>
-                        <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
-                            <children>
-                                <Label text="Zu verkaufende Fahrzeuge" textFill="#3517fc">
-                                    <font>
-                                        <Font name="Arial Black" size="24.0" />
-                                    </font>
-                                </Label>
-                                <VBox fx:id="vBoxCarsOnSale" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
-                            </children>
-                        </VBox>
-                    </content>
-                </ScrollPane>
             </children>
         </AnchorPane>
     </children>

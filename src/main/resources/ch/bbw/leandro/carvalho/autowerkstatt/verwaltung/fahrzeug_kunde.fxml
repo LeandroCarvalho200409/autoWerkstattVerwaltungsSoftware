@@ -95,7 +95,7 @@
                         </VBox>
                     </content>
                 </ScrollPane>
-                <Label layoutX="481.0" layoutY="79.0" text="Home" textFill="#3517fc">
+                <Label layoutX="405.0" layoutY="82.0" text="Kundenfahrzeuge" textFill="#3517fc">
                     <font>
                         <Font name="Arial Black" size="24.0" />
                     </font>

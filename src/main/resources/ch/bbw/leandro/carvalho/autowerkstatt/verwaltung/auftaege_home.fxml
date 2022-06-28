@@ -85,31 +85,36 @@
                     <content>
                         <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
                             <children>
-                                <Label text="Fahrzeuge in Auftrag" textFill="#3517fc">
-                                    <font>
-                                        <Font name="Arial Black" size="24.0" />
-                                    </font>
-                                </Label>
-                                <VBox fx:id="vBoxCarsPendent" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
+                        <AnchorPane prefHeight="42.0" prefWidth="878.0">
+                           <children>
+                                      <Label text="Fahrzeuge in Auftrag" textFill="#3517fc">
+                                          <font>
+                                              <Font name="Arial Black" size="24.0" />
+                                          </font>
+                                      </Label>
+                              <Button layoutX="722.0" layoutY="6.0" mnemonicParsing="false" onAction="#auftragErfassen" text="Auftrag erfassen" />
+                           </children>
+                        </AnchorPane>
+                                <VBox fx:id="vBoxAuftraegePendent" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
                             </children>
                         </VBox>
                     </content>
                 </ScrollPane>
-                <Label layoutX="481.0" layoutY="79.0" text="Home" textFill="#3517fc">
+                <Label layoutX="457.0" layoutY="80.0" text="Aufträge" textFill="#3517fc">
                     <font>
                         <Font name="Arial Black" size="24.0" />
                     </font>
                 </Label>
-                <ScrollPane layoutX="81.0" layoutY="394.0" prefHeight="159.0" prefWidth="878.0">
+                <ScrollPane layoutX="81.0" layoutY="394.0" prefHeight="354.0" prefWidth="878.0">
                     <content>
-                        <VBox prefHeight="150.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
+                        <VBox prefHeight="337.0" prefWidth="878.0" style="-fx-background-color: #ffffff;">
                             <children>
-                                <Label text="Zu verkaufende Fahrzeuge" textFill="#3517fc">
+                                <Label text="Erledigte Aufträge" textFill="#3517fc">
                                     <font>
                                         <Font name="Arial Black" size="24.0" />
                                     </font>
                                 </Label>
-                                <VBox fx:id="vBoxCarsOnSale" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
+                                <VBox fx:id="vBoxAuftraegeErledigt" prefHeight="45.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />
                             </children>
                         </VBox>
                     </content>

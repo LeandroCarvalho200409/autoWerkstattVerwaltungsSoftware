@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="765.0" prefWidth="1286.0" stylesheets="@home.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.VerkaufsfahrzeugVerwaltungController">
+    <children>
+        <VBox prefHeight="800.0" prefWidth="250.0" style="-fx-background-color: #3517fc;">
+            <children>
+                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                    <children>
+                        <ImageView fitHeight="93.0" fitWidth="91.0" layoutX="79.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/user.png" />
+                            </image>
+                        </ImageView>
+                        <Button fx:id="logoutButton" layoutX="89.0" layoutY="155.0" mnemonicParsing="false" onAction="#logout" prefHeight="31.0" prefWidth="71.0" styleClass="logoutButton" text="Logout" textFill="#f8f7f7">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <Button fx:id="homeNavButton" mnemonicParsing="false" onAction="#openHome" prefHeight="60.0" prefWidth="250.0" text="Home" textFill="#f8f7f7">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="sectionText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="mitarbeiterNavButton" layoutX="10.0" layoutY="210.0" mnemonicParsing="false" onAction="#openMitarbeiter" prefHeight="60.0" prefWidth="250.0" text="Mitarbeiter" textFill="#f8f7f7">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="sectionText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="kundenNavButton" layoutX="10.0" layoutY="270.0" mnemonicParsing="false" onAction="#openKunden" prefHeight="60.0" prefWidth="250.0" text="Kunden" textFill="#f8f7f7">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="sectionText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="auftraegeNavButton" layoutX="10.0" layoutY="330.0" mnemonicParsing="false" onAction="#openAuftraege" prefHeight="60.0" prefWidth="250.0" text="Aufträge" textFill="#f8f7f7">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="sectionText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="fahrzeugeNavButton" layoutX="10.0" layoutY="390.0" mnemonicParsing="false" onAction="#openFahrzeuge" prefHeight="60.0" prefWidth="250.0" text="Fahrzeuge" textFill="#f8f7f7">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="currentSection" />
+                        <String fx:value="sectionText" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="fahrzeugeNavButton1" layoutX="10.0" layoutY="450.0" mnemonicParsing="false" onAction="#openErsatzteile" prefHeight="60.0" prefWidth="250.0" text="Ersatzteile" textFill="#f8f7f7">
+                    <font>
+                        <Font name="Arial Black" size="18.0" />
+                    </font>
+                    <styleClass>
+                        <String fx:value="section" />
+                        <String fx:value="sectionText" />
+                    </styleClass>
+                </Button>
+            </children></VBox>
+        <AnchorPane prefHeight="765.0" prefWidth="1041.0" style="-fx-background-color: #ffffffff;">
+            <children>
+                <Label layoutX="365.0" layoutY="85.0" text="Verkaufsfahrzeugverwaltung" textFill="#3517fc">
+                    <font>
+                        <Font name="Arial Black" size="24.0" />
+                    </font>
+                </Label>
+                <Label fx:id="verwaltung_description" layoutX="395.0" layoutY="122.0" prefHeight="76.0" prefWidth="250.0" textFill="#3517fc">
+                    <font>
+                        <Font name="Arial Black" size="24.0" />
+                    </font>
+                </Label>
+                <HBox layoutX="122.0" layoutY="222.0" prefHeight="40.0" prefWidth="266.0">
+                    <children>
+                        <Label fx:id="labelArt" prefHeight="40.0" prefWidth="100.0" text="Marke:">
+                            <font>
+                                <Font name="Arial" size="13.0" />
+                            </font></Label>
+                        <TextField fx:id="fieldMarke" prefHeight="40.0" prefWidth="180.0" />
+                    </children>
+                </HBox>
+                <HBox layoutX="122.0" layoutY="321.0" prefHeight="40.0" prefWidth="266.0">
+                    <children>
+                        <Label fx:id="labelArt1" prefHeight="40.0" prefWidth="100.0" text="Baureihe:">
+                            <font>
+                                <Font name="Arial" size="13.0" />
+                            </font></Label>
+                        <TextField fx:id="fieldBaureihe" prefHeight="40.0" prefWidth="180.0" />
+                    </children>
+                </HBox>
+                <HBox layoutX="421.0" layoutY="222.0" prefHeight="40.0" prefWidth="266.0">
+                    <children>
+                        <Label fx:id="labelArt3" prefHeight="40.0" prefWidth="100.0" text="Farbencode:">
+                            <font>
+                                <Font name="Arial" size="13.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="fieldFarbenCode" prefHeight="40.0" prefWidth="180.0" />
+                    </children>
+                </HBox>
+                <HBox layoutX="421.0" layoutY="321.0" prefHeight="40.0" prefWidth="266.0">
+                    <children>
+                        <Label fx:id="labelArt31" prefHeight="40.0" prefWidth="100.0" text="1. IVS:">
+                            <font>
+                                <Font name="Arial" size="13.0" />
+                            </font>
+                        </Label>
+                        <DatePicker fx:id="dateIVS" prefHeight="40.0" prefWidth="180.0" />
+                    </children>
+                </HBox>
+                <HBox layoutX="421.0" layoutY="468.0" prefHeight="40.0" prefWidth="266.0">
+                    <children>
+                        <Label fx:id="labelArt21" prefHeight="40.0" prefWidth="100.0" text="Verkauft an:">
+                            <font>
+                                <Font name="Arial" size="13.0" />
+                            </font>
+                        </Label>
+                        <MenuButton fx:id="kundeDropdown" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" />
+                    </children>
+                </HBox>
+                <Button fx:id="saveButton" layoutX="421.0" layoutY="656.0" mnemonicParsing="false" onAction="#save" prefHeight="31.0" prefWidth="95.0" text="Speichern" />
+                <Button fx:id="removeButton" layoutX="554.0" layoutY="656.0" mnemonicParsing="false" onAction="#removeFahrzeug" prefHeight="31.0" prefWidth="95.0" text="Löschen" />
+            <HBox layoutX="122.0" layoutY="268.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt2" prefHeight="40.0" prefWidth="100.0" text="Modell:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldModell" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="122.0" layoutY="371.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt11" prefHeight="40.0" prefWidth="100.0" text="CCM:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldCCM" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="122.0" layoutY="420.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt111" prefHeight="40.0" prefWidth="100.0" text="PS:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldPS" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="122.0" layoutY="468.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt1111" prefHeight="40.0" prefWidth="100.0" text="Anzahl Plätze:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldAnzPlaetze" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="122.0" layoutY="517.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt11111" prefHeight="40.0" prefWidth="100.0" text="Aufbau:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldAufbau" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="122.0" layoutY="564.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt111111" prefHeight="40.0" prefWidth="100.0" text="Farbe:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldFarbe" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="421.0" layoutY="268.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt32" prefHeight="40.0" prefWidth="100.0" text="VIN:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldVIN" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="421.0" layoutY="371.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt321" prefHeight="40.0" prefWidth="100.0" text="Preis:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="fieldPreis" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <HBox layoutX="421.0" layoutY="420.0" prefHeight="40.0" prefWidth="266.0">
+               <children>
+                  <Label fx:id="labelArt311" prefHeight="40.0" prefWidth="100.0" text="Gekauft am:">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateGekauft" prefHeight="40.0" prefWidth="180.0" />
+               </children>
+            </HBox>
+            <CheckBox fx:id="checkVerkauft" layoutX="422.0" layoutY="527.0" mnemonicParsing="false" text="Verkauft" />
+            </children>
+        </AnchorPane>
+    </children>
+</HBox>

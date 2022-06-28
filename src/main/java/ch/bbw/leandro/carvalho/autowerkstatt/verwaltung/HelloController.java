@@ -53,7 +53,25 @@ public class HelloController extends NavigationController implements Initializab
     }
 
     public void verkaufsfahrzeugVerwalten(Verkaufsfahrzeug verkaufsfahrzeug){
-
+        try {
+            Autogarage autogarage = new Autogarage("Test");
+            autogarage.getData();
+            Stage stage = helloApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf_verwaltung.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            VerkaufsfahrzeugVerwaltungController controller = fxmlLoader.getController();
+            controller.setFahrzeug(verkaufsfahrzeug);
+            controller.fillupData();
+            String css = this.getClass().getResource("home.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.close();
+            stage.setScene(scene);
+            stage.setTitle("Verkaufsfahrzeug | Verwaltung");
+            stage.setResizable(false);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void renderCarsOnSale(){
@@ -99,7 +117,7 @@ public class HelloController extends NavigationController implements Initializab
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
         for (Auftrag auftrag: autogarage.getAuftraege()) {
-            if(!(auftrag.getStatus().equals("fertig"))){
+            if(!(auftrag.getStatus().equals("erledigt"))){
                 Person auftraggeber = null;
                 if(auftrag.getFahrzeug() instanceof Kundenfahrzeug){
                     Kundenfahrzeug kundenfahrzeug = (Kundenfahrzeug) auftrag.getFahrzeug();

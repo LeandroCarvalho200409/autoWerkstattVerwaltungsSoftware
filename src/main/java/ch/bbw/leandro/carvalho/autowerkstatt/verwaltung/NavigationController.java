@@ -43,6 +43,8 @@ public class NavigationController {
             Stage stage = this.helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mitarbeiter_home.fxml"));
             Scene mitarbeiterHome = new Scene(fxmlLoader.load());
+            MitarbeiterController controller = fxmlLoader.getController();
+            controller.renderMitarbeiter();
             stage.setTitle("Mitarbeiter | Home");
             stage.setScene(mitarbeiterHome);
             stage.setResizable(false);
@@ -57,6 +59,8 @@ public class NavigationController {
             Stage stage = this.helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("kunden_home.fxml"));
             Scene kundenHome = new Scene(fxmlLoader.load());
+            KundenController controller = fxmlLoader.getController();
+            controller.renderKunden();
             stage.setTitle("Kunden | Home");
             stage.setScene(kundenHome);
             stage.setResizable(false);
@@ -85,6 +89,8 @@ public class NavigationController {
             Stage stage = this.helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ersatzteile_home.fxml"));
             Scene ersatzteileHome = new Scene(fxmlLoader.load());
+            ErsatzteileController controller = fxmlLoader.getController();
+            controller.renderErsatzteile();
             stage.setTitle("Ersatzteile | Home");
             stage.setScene(ersatzteileHome);
             stage.setResizable(false);
@@ -99,10 +105,13 @@ public class NavigationController {
             Stage stage = this.helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftaege_home.fxml"));
             Scene auftraegeHome = new Scene(fxmlLoader.load());
+            AuftraegeController controller = fxmlLoader.getController();
             stage.setTitle("Aufträge | Home");
             stage.setScene(auftraegeHome);
             stage.setResizable(false);
             stage.show();
+            controller.renderAuftraegePendent();
+            controller.renderAuftraegeErledigt();
         }catch (IOException e){
             e.printStackTrace();
         }
