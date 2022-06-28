@@ -16,20 +16,42 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FahrzeugeController extends NavigationController implements Initializable {
+public class FahrzeugeController extends NavigationController{
 
     private HelloApplication helloApplication;
 
     @FXML
     private VBox vBoxCarsPendent;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        renderCarsPendent();
-    }
+    @FXML
+    private VBox vBoxCarsSold;
+
+    @FXML
+    private VBox vBoxCarsSalePendent;
+
+    @FXML
+    private VBox vBoxCarsKunden;
 
     public void auftragVerwalten(Auftrag auftrag){
-
+        try {
+            Autogarage autogarage = new Autogarage("Test");
+            autogarage.getData();
+            Stage stage = helloApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftraege_verwaltung.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            AuftraegeVerwaltungController controller = fxmlLoader.getController();
+            controller.setAuftrag(auftrag);
+            controller.fillupData();
+            String css = this.getClass().getResource("home.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.close();
+            stage.setScene(scene);
+            stage.setTitle("Aufträge | Verwaltung");
+            stage.setResizable(false);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void renderCarsPendent(){
@@ -88,6 +110,9 @@ public class FahrzeugeController extends NavigationController implements Initial
             Stage stage = helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+            FahrzeugeController controller = fxmlLoader.getController();
+            controller.renderCarSoldPendent();
+            controller.renderCarsSold();
             String css = this.getClass().getResource("home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);
@@ -105,6 +130,8 @@ public class FahrzeugeController extends NavigationController implements Initial
             Stage stage = helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_kunde.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
+            FahrzeugeController controller = fxmlLoader.getController();
+            controller.renderCarsKunden();
             String css = this.getClass().getResource("home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);
@@ -113,6 +140,154 @@ public class FahrzeugeController extends NavigationController implements Initial
             stage.show();
         }catch (IOException e){
             e.printStackTrace();
+        }
+    }
+
+    public void openFahrzeugErfassen(ActionEvent actionEvent) {
+
+    }
+
+    private void verkaufsfahrzeugVerwalten(Verkaufsfahrzeug verkaufsfahrzeug) {
+        try {
+            Autogarage autogarage = new Autogarage("Test");
+            autogarage.getData();
+            Stage stage = helloApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf_verwaltung.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            VerkaufsfahrzeugVerwaltungController controller = fxmlLoader.getController();
+            controller.setFahrzeug(verkaufsfahrzeug);
+            controller.fillupData();
+            String css = this.getClass().getResource("home.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.close();
+            stage.setScene(scene);
+            stage.setTitle("Verkaufsfahrzeug | Verwaltung");
+            stage.setResizable(false);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    private void kundenFahrzeugVerwalten(Kundenfahrzeug kundenFahrzeug) {
+
+    }
+
+    public void renderCarSoldPendent(){
+        Autogarage autogarage = new Autogarage("Test");
+        autogarage.getData();
+        for (Fahrzeug fahrzeug:autogarage.getFahrzeuge()) {
+            if(fahrzeug instanceof Verkaufsfahrzeug){
+                Verkaufsfahrzeug verkaufsfahrzeug = (Verkaufsfahrzeug) fahrzeug;
+                if(!(verkaufsfahrzeug.isVerkauft())){
+                    HBox hBox = new HBox();
+                    Label auto = new Label("Auto: "+verkaufsfahrzeug.getMarke()+" "+verkaufsfahrzeug.getModell());
+                    Label jahrgang = new Label("Jahrgang: "+verkaufsfahrzeug.getErsteInverkehrssetzung().getYear());
+                    Label preis = new Label("Verlangter Preis: CHF "+verkaufsfahrzeug.getPreis());
+                    auto.setPrefWidth(300);
+                    auto.setPrefHeight(50);
+                    jahrgang.setPrefWidth(150);
+                    jahrgang.setPrefHeight(50);
+                    preis.setPrefWidth(150);
+                    preis.setPrefHeight(50);
+                    hBox.getChildren().add(auto);
+                    hBox.getChildren().add(jahrgang);
+                    hBox.getChildren().add(preis);
+
+                    Button verwalten = new Button(">");
+                    verwalten.getStyleClass().add("verwaltenButton");
+                    verwalten.setPrefHeight(50);
+                    verwalten.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            verkaufsfahrzeugVerwalten(verkaufsfahrzeug);
+                        }
+                    });
+                    hBox.getChildren().add(verwalten);
+                    hBox.setPrefWidth(vBoxCarsSalePendent.getPrefWidth());
+                    hBox.setPrefHeight(50);
+                    vBoxCarsSalePendent.getChildren().add(hBox);
+                }
+            }
+        }
+    }
+
+    public void renderCarsSold(){
+        Autogarage autogarage = new Autogarage("Test");
+        autogarage.getData();
+        for (Fahrzeug fahrzeug:autogarage.getFahrzeuge()) {
+            if(fahrzeug instanceof Verkaufsfahrzeug){
+                Verkaufsfahrzeug verkaufsfahrzeug = (Verkaufsfahrzeug) fahrzeug;
+                if(verkaufsfahrzeug.isVerkauft()){
+                    HBox hBox = new HBox();
+                    Label auto = new Label("Auto: "+verkaufsfahrzeug.getMarke()+" "+verkaufsfahrzeug.getModell());
+                    Label jahrgang = new Label("Jahrgang: "+verkaufsfahrzeug.getErsteInverkehrssetzung().getYear());
+                    Label verkauft = new Label("Verkauft: "+verkaufsfahrzeug.getVerkauftAn().toString());
+                    Label preis = new Label("Preis: CHF "+verkaufsfahrzeug.getPreis());
+                    verkauft.setPrefWidth(300);
+                    verkauft.setPrefHeight(50);
+                    auto.setPrefWidth(300);
+                    auto.setPrefHeight(50);
+                    jahrgang.setPrefWidth(150);
+                    jahrgang.setPrefHeight(50);
+                    preis.setPrefWidth(100);
+                    preis.setPrefHeight(50);
+                    hBox.getChildren().add(auto);
+                    hBox.getChildren().add(jahrgang);
+                    hBox.getChildren().add(verkauft);
+                    hBox.getChildren().add(preis);
+
+                    Button verwalten = new Button(">");
+                    verwalten.getStyleClass().add("verwaltenButton");
+                    verwalten.setPrefHeight(50);
+                    verwalten.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            verkaufsfahrzeugVerwalten(verkaufsfahrzeug);
+                        }
+                    });
+                    hBox.getChildren().add(verwalten);
+                    hBox.setPrefWidth(vBoxCarsSold.getPrefWidth());
+                    hBox.setPrefHeight(50);
+                    vBoxCarsSold.getChildren().add(hBox);
+                }
+            }
+        }
+    }
+
+    public void renderCarsKunden(){
+        Autogarage autogarage = new Autogarage("Test");
+        autogarage.getData();
+        for (Fahrzeug fahrzeug:autogarage.getFahrzeuge()) {
+            if(fahrzeug instanceof Kundenfahrzeug){
+                Kundenfahrzeug kundenFahrzeug = (Kundenfahrzeug) fahrzeug;
+                HBox hBox = new HBox();
+                Label auto = new Label("Auto: "+kundenFahrzeug.getMarke()+" "+kundenFahrzeug.getModell());
+                Label jahrgang = new Label("Jahrgang: "+kundenFahrzeug.getErsteInverkehrssetzung().getYear());
+                Label besitzer = new Label("Besitzer: "+kundenFahrzeug.getBesitzer().getVorname()+" "+kundenFahrzeug.getBesitzer().getName());
+                besitzer.setPrefWidth(300);
+                besitzer.setPrefHeight(50);
+                auto.setPrefWidth(300);
+                auto.setPrefHeight(50);
+                jahrgang.setPrefWidth(150);
+                jahrgang.setPrefHeight(50);
+                hBox.getChildren().add(auto);
+                hBox.getChildren().add(jahrgang);
+                hBox.getChildren().add(besitzer);
+
+                Button verwalten = new Button(">");
+                verwalten.getStyleClass().add("verwaltenButton");
+                verwalten.setPrefHeight(50);
+                verwalten.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                            kundenFahrzeugVerwalten(kundenFahrzeug);
+                        }
+                });
+                hBox.getChildren().add(verwalten);
+                hBox.setPrefWidth(vBoxCarsKunden.getPrefWidth());
+                hBox.setPrefHeight(50);
+                vBoxCarsKunden.getChildren().add(hBox);
+            }
         }
     }
 }

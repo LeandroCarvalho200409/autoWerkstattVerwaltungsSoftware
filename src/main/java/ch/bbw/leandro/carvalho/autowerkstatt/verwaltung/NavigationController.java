@@ -75,6 +75,8 @@ public class NavigationController {
             Stage stage = this.helloApplication.getStage();
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_home.fxml"));
             Scene fahrzeugHome = new Scene(fxmlLoader.load());
+            FahrzeugeController controller = fxmlLoader.getController();
+            controller.renderCarsPendent();
             stage.setTitle("Fahrzeuge | Home");
             stage.setScene(fahrzeugHome);
             stage.setResizable(false);
