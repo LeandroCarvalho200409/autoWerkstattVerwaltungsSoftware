@@ -11,6 +11,12 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Dies ist die Hauptklasse der ganzen Applikation. Diese Klasse verwaltet eine ganze Autogarage.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
 public class Autogarage {
     private String name;
     private ArrayList<Fahrzeug> fahrzeuge;
@@ -18,6 +24,10 @@ public class Autogarage {
     private ArrayList<Auftrag> auftraege;
     private ArrayList<Ersatzteil> ersatzteile;
 
+    /**
+     * Dies ist der Constructor der Klasse Autogarage.
+     * @param name Der Name der Autogarage.
+     */
     public Autogarage(String name){
         this.name = name;
         fahrzeuge = new ArrayList<>();
@@ -26,6 +36,10 @@ public class Autogarage {
         ersatzteile = new ArrayList<>();
     }
 
+    /**
+     * Hiermit kann ein neues Fahrzeug in die ArrayList fahrzeuge eingefügt werden.
+     * @param fahrzeug Das Fahrzeug, welches eingefügt werden soll.
+     */
     public void addFahrzeug(Fahrzeug fahrzeug){
         boolean equalFound = false;
         for (Fahrzeug f:fahrzeuge) {
@@ -38,6 +52,10 @@ public class Autogarage {
         }
     }
 
+    /**
+     * Hiermit kann eine neue Person in die ArrayList personen eingefügt werden.
+     * @param person Person, welche eingefügt werden soll.
+     */
     public void addPerson(Person person){
         boolean equalFound = false;
         if(person instanceof Mitarbeiter){
@@ -66,6 +84,10 @@ public class Autogarage {
         }
     }
 
+    /**
+     * Hiermit kann ein neuer Auftrag in die ArrayList auftraege eingesetzt werden.
+     * @param auftrag Auftrag, welcher neu hinzugefügt werden soll.
+     */
     public void addAuftrag(Auftrag auftrag){
         boolean equalFound = false;
         for (Auftrag a:auftraege) {
@@ -78,6 +100,10 @@ public class Autogarage {
         }
     }
 
+    /**
+     * Hiermit kann ein neues Ersatzteil in die ArrayList ersatzteile eingefügt werden.
+     * @param ersatzteil Ersatzteil, welches in die ArrayList eingefügt werden soll.
+     */
     public void addErsatzteil(Ersatzteil ersatzteil){
         boolean equalFound = false;
         for (Ersatzteil e:ersatzteile) {
@@ -90,22 +116,40 @@ public class Autogarage {
         }
     }
 
+    /**
+     * Mithilfe dieser Methode kann ein spezifisches Fahrzeug aus der ArrayList fahrzeuge entfernt werden.
+     * @param fahrzeug
+     */
     public void removeFahrzeug(Fahrzeug fahrzeug){
         fahrzeuge.remove(fahrzeug);
     }
-
+    /**
+     * Mithilfe dieser Methode kann eine spezifische Person aus der ArrayList personen entfernt werden.
+     * @param person
+     */
     public void removePerson(Person person){
         personen.remove(person);
     }
-
+    /**
+     * Mithilfe dieser Methode kann ein spezifischer Auftrag aus der ArrayList auftraege entfernt werden.
+     * @param auftrag
+     */
     public void removeAuftrag(Auftrag auftrag){
         auftraege.remove(auftrag);
     }
-
+    /**
+     * Mithilfe dieser Methode kann ein spezifisches Ersatzteil aus der ArrayList ersatzteile entfernt werden.
+     * @param ersatzteil
+     */
     public void removeErsatzteil(Ersatzteil ersatzteil){
         ersatzteile.remove(ersatzteil);
     }
 
+    /**
+     * Mit dieser Methode kann man anhand einer spezifischen Kundennummer ein Kunde aus der ArrayList personen holen.
+     * @param kundenNummer
+     * @return Kunde, welches allenfalls in der ArrayList gefunden wird.
+     */
     public Kunde getPersonByKundenNummer(String kundenNummer) {
         Kunde k = null;
         for (Person p:this.personen) {
@@ -119,6 +163,10 @@ public class Autogarage {
         return k;
     }
 
+    /**
+     * Diese Methode speichert alle Daten, welche in den respektiven ArrayLists gespeichert waren in das data.txt-File ab. Dies macht es indem es mehrere JSON-Arrays
+     * und Objekte, je nach Notwendigkeit, erstellt und diese in das File schreibt.
+     */
     public void saveData(){
         try{
             FileWriter fileWriter = new FileWriter("data.txt");
@@ -353,7 +401,8 @@ public class Autogarage {
     }
 
     /**
-     * Wird beim Start der Applikation aufgerufen um die Daten vom data.txt file abzuholen und lokal zu speichern
+     * Wird beim Start der Applikation aufgerufen um die Daten vom data.txt file abzuholen und lokal zu speichern. Dies macht die Methode indem es den String wieder in
+     * JSON-Arrays oder Objekte um konvertiert und die respektiven Objekte erstellt und speichert.
      */
     public void getData(){
         try {
@@ -436,7 +485,7 @@ public class Autogarage {
                     }
                 }
 
-                Auftrag auftrag = new Auftrag(auftragJSON.getInt("auftragsNr") ,fahrzeugAuftrag, auftragJSON.getString("art"), auftragJSON.getInt("preis"), auftragJSON.getString("status"), LocalDate.of(zuErledigenBisJSONArray.getInt(0), zuErledigenBisJSONArray.getInt(1), zuErledigenBisJSONArray.getInt(2)), zustaendigMitarbeiter);
+                Auftrag auftrag = new Auftrag(this ,fahrzeugAuftrag, auftragJSON.getString("art"), auftragJSON.getInt("preis"), auftragJSON.getString("status"), LocalDate.of(zuErledigenBisJSONArray.getInt(0), zuErledigenBisJSONArray.getInt(1), zuErledigenBisJSONArray.getInt(2)), zustaendigMitarbeiter);
 
                 for (Object s:zustaendigeMitarbeiter) {
                     String string = (String) s;
@@ -468,14 +517,29 @@ public class Autogarage {
         }
     }
 
+    /**
+     * Gibt die ArrayList aller Personen zurück.
+     * @return ArrayList aller Personen.
+     */
     public ArrayList<Person> getPersonen() {
         return personen;
     }
 
+    /**
+     * Setzt die ArrayList aller Personen gleich der ArrayList, welche als Parameter mitgegeben wird.
+     * @param personen
+     */
     public void setPersonen(ArrayList<Person> personen) {
         this.personen = personen;
     }
 
+    /**
+     * Diese Methode ist teil der Anmeldungsfunktion dieser Applikation. Hier bekommt die Methode den Benutzername und das Passwort, welches eingegeben wurde mit und
+     * schaut, ob diese irgendwo auch existieren. Falls es gefunden wurde, gibt es den Wert true zurück, sonst gibt es den Wert false zurück.
+     * @param username
+     * @param password
+     * @return Boolean, welches besagt, ob die Anmeldungsdaten irgendwo gefunden wurden oder nicht.
+     */
     public boolean anmelden(String username, String password){
         boolean anmeldungEfrolgreich = false;
         for (Person p: personen) {
@@ -489,20 +553,26 @@ public class Autogarage {
         return anmeldungEfrolgreich;
     }
 
-    public void getPerson(){
-        for (Person p:personen) {
-            System.out.println(p.getGeburtsDatum().toString());
-        }
-    }
-
+    /**
+     * Gibt eine ArrayList aller Fahrzeuge zurück.
+     * @return ArrayList aller Fahrzeuge.
+     */
     public ArrayList<Fahrzeug> getFahrzeuge(){
         return this.fahrzeuge;
     }
 
+    /**
+     * Gibt eine ArrayList aller Aufträge zurück.
+     * @return ArrayLsit aller Aufträge.
+     */
     public ArrayList<Auftrag> getAuftraege(){
         return this.auftraege;
     }
 
+    /**
+     * Gibt eine ArrayList aller Ersatzteile zurück.
+     * @return ArrayList aller Ersatzteile.
+     */
     public ArrayList<Ersatzteil> getErsatzteile(){
         return this.ersatzteile;
     }

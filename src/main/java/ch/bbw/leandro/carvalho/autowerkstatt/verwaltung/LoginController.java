@@ -4,10 +4,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+/**
+ * Diese Klasse dient als Controller für die Login-Seite.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
 
 public class LoginController {
     @FXML
@@ -16,9 +24,15 @@ public class LoginController {
     private TextField pwdField;
     @FXML
     private Button loginButton;
+    @FXML
+    private Label errorLabel;
 
     private HelloApplication helloApplication;
 
+    /**
+     * In dieser Methode wird die Anmeldung eines Users getätigt. Falls die Anmeldedaten nicht übereinstimmen oder schlichtweg nicht existieren, wird die
+     * LoginException geworfen und somit im Login-Fenster eine Nachricht ausgegeben.
+     */
     public void loginHandler(){
         try {
             String username = usernameField.getText();
@@ -35,9 +49,13 @@ public class LoginController {
                 stage.setTitle("Home");
                 stage.setResizable(false);
                 stage.show();
+            }else{
+                throw new LoginException("Anmeldungsdaten falsch oder User nicht vorhanden");
             }
         }catch (IOException e){
             e.printStackTrace();
+        }catch (LoginException e){
+            errorLabel.setText(e.getMessage());
         }
     }
 }

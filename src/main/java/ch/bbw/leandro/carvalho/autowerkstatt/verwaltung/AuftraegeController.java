@@ -13,6 +13,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Diese Klasse hier dient als Controller für die Hauptseite der Aufträge.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
+
 public class AuftraegeController extends NavigationController{
 
     @FXML
@@ -21,6 +28,10 @@ public class AuftraegeController extends NavigationController{
     private VBox vBoxAuftraegeErledigt;
     private HelloApplication helloApplication;
 
+    /**
+     * Falls der Button zum Verwalten eines Auftrages gedrückt wird, wird diese Methode aufgerufen, welche das Verwaltungsfenster für diesen Auftrag aufruft.
+     * @param auftrag Auftrag, welches verwaltet werden soll.
+     */
     public void auftragVerwalten(Auftrag auftrag){
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -43,6 +54,9 @@ public class AuftraegeController extends NavigationController{
         }
     }
 
+    /**
+     * Hiermit soll die Liste aller pendenten Aufträge erstellt werden.
+     */
     public void renderAuftraegePendent(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -92,6 +106,9 @@ public class AuftraegeController extends NavigationController{
         }
     }
 
+    /**
+     * Hiermit soll die Liste aller schon erledigten Aufträge erstellt werden.
+     */
     public void renderAuftraegeErledigt(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -141,6 +158,28 @@ public class AuftraegeController extends NavigationController{
         }
     }
 
+    /**
+     * Falls der Button zum Erfassen eines neuen Auftrages aufgerufen wird, wird das entsprechende Fenster in dieser Methode aufgerufen.
+     * @param actionEvent
+     */
     public void auftragErfassen(ActionEvent actionEvent) {
+        try {
+            Autogarage autogarage = new Autogarage("Test");
+            autogarage.getData();
+            Stage stage = helloApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftraege_erfassen.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            AuftraegeVerwaltungController controller = fxmlLoader.getController();
+            controller.renderDropdowns();
+            String css = this.getClass().getResource("home.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.close();
+            stage.setScene(scene);
+            stage.setTitle("Aufträge | Erfassen");
+            stage.setResizable(false);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 }

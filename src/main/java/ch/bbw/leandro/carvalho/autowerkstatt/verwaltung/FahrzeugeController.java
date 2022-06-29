@@ -4,17 +4,21 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
+
+/**
+ * Diese Klasse dient als Controller für die Hauptseite der Fahrzeuge.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
 
 public class FahrzeugeController extends NavigationController{
 
@@ -32,6 +36,10 @@ public class FahrzeugeController extends NavigationController{
     @FXML
     private VBox vBoxCarsKunden;
 
+    /**
+     * Beim aufruf dieser Methode wird die Seite zum Verwalten des Auftrages aufgerufen.
+     * @param auftrag
+     */
     public void auftragVerwalten(Auftrag auftrag){
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -54,6 +62,9 @@ public class FahrzeugeController extends NavigationController{
         }
     }
 
+    /**
+     * Mit dem Aufruf dieser Methode wird die Liste der pendenten Aufträge ausgefüllt.
+     */
     public void renderCarsPendent(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -103,6 +114,9 @@ public class FahrzeugeController extends NavigationController{
         }
     }
 
+    /**
+     * Beim klicken des Buttons wird diese Methode aufgerufen, welche die Seite für die Verkaufsfahrzeuge öffnet.
+     */
     public void openVerkauf(){
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -123,6 +137,10 @@ public class FahrzeugeController extends NavigationController{
             e.printStackTrace();
         }
     }
+
+    /**
+     * Beim klicken des Buttons wird diese Methode aufgerufen, welche die Seite für die Kundenfahrzeuge öffnet.
+     */
     public void openKundenFZ(){
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -143,10 +161,18 @@ public class FahrzeugeController extends NavigationController{
         }
     }
 
+    /**
+     * Mit dieser Methode soll es möglich sein, ein neues Fahrzeug, nach dem Aufruf der entsprechenden Seite zu erfassen.
+     * @param actionEvent
+     */
     public void openFahrzeugErfassen(ActionEvent actionEvent) {
 
     }
 
+    /**
+     * Nach dem Aufrufen dieser Methode wird die Seite zum Verwalten der Verkaufsfahrzeuge geöffnet.
+     * @param verkaufsfahrzeug
+     */
     private void verkaufsfahrzeugVerwalten(Verkaufsfahrzeug verkaufsfahrzeug) {
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -168,10 +194,18 @@ public class FahrzeugeController extends NavigationController{
             e.printStackTrace();
         }
     }
+
+    /**
+     * Nach dem Aufrufen dieser Methode wird die Seite zum Verwalten der Kundenfahrzeuge geöffnet.
+     * @param kundenFahrzeug
+     */
     private void kundenFahrzeugVerwalten(Kundenfahrzeug kundenFahrzeug) {
 
     }
 
+    /**
+     * Beim Aufruf dieser Methode wird die Liste der noch nicht verkauften Autos gefüllt.
+     */
     public void renderCarSoldPendent(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -211,6 +245,9 @@ public class FahrzeugeController extends NavigationController{
         }
     }
 
+    /**
+     * Mit dem Aufruf dieser Methode wird die Liste der bereits verkauften Autos gefüllt.
+     */
     public void renderCarsSold(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -254,6 +291,9 @@ public class FahrzeugeController extends NavigationController{
         }
     }
 
+    /**
+     * Beim Aufruf dieser Methode wird die Liste aller Fahrzeuge von den Kunden gefüllt.
+     */
     public void renderCarsKunden(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();

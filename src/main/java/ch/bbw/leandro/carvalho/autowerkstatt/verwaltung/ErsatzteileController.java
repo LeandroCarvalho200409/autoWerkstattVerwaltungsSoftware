@@ -8,15 +8,29 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Diese Klasse dient als Controller für die Hauptseite der Ersatzteile
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
+
 public class ErsatzteileController extends NavigationController {
     @FXML
     private VBox vBoxErsatzteile;
     private Autogarage autogarage;
     private HelloApplication helloApplication;
 
+    /**
+     * Mithilfe dieser Methode wird die Seite zum Verwalten eines Ersatzteils aufgerufen.
+     * @param ersatzteil
+     */
     private void ersatzteilVerwalten(Ersatzteil ersatzteil) {
     }
 
+    /**
+     * Hiermit wird die Liste aller Ersatzteile gefüllt.
+     */
     public void renderErsatzteile() {
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -55,6 +69,10 @@ public class ErsatzteileController extends NavigationController {
         }
     }
 
+    /**
+     * Mit dieser Methode wird die Seite zum Erfassen eines neuen Ersatzteils aufgerufen.
+     * @param actionEvent
+     */
     public void ersatzteilErfassen(ActionEvent actionEvent) {
     }
 }

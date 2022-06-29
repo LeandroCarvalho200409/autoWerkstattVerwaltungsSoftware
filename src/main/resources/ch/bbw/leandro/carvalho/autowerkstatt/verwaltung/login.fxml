@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="545.0" prefWidth="600.0" style="-fx-background-color: #ffffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.LoginController">
+<AnchorPane prefHeight="590.0" prefWidth="600.0" style="-fx-background-color: #ffffffff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.LoginController">
    <children>
       <AnchorPane layoutX="118.0" layoutY="199.0" prefHeight="304.0" prefWidth="365.0" style="-fx-background-color: #3517fc;">
          <children>
@@ -39,5 +39,6 @@
             <Font name="Arial Bold" size="36.0" />
          </font>
       </Label>
+      <Label fx:id="errorLabel" layoutX="283.0" layoutY="524.0" textFill="#f50000" />
    </children>
 </AnchorPane>

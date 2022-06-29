@@ -8,15 +8,29 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
+/**
+ * Diese Klasse hier dient als Controller für die Seite der Mitarbeiter.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
+
 public class MitarbeiterController extends NavigationController{
     public VBox vBoxMitarbeiter;
 
     public Autogarage autogarage;
 
+    /**
+     * Diese Methode wird gebraucht um ein Mitarbeiter zu verwalten.
+     * @param mitarbeiter
+     */
     private void mitarbeiterVerwalten(Mitarbeiter mitarbeiter) {
 
     }
 
+    /**
+     * Diese Methode füllt die Liste aller Mitarbeiter aus.
+     */
     public void renderMitarbeiter(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -58,6 +72,10 @@ public class MitarbeiterController extends NavigationController{
         }
     }
 
+    /**
+     * Diese Methode bewirkt, dass ein User ein neuer Mitarbeiter erfassen darf.
+     * @param actionEvent
+     */
     public void mitarbeiterErfassen(ActionEvent actionEvent) {
 
     }

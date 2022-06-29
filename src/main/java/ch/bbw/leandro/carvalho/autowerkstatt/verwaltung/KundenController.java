@@ -2,21 +2,42 @@ package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+
+/**
+ * Diese Klasse dient als Controller für die GUIs der Kunden.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
 
 public class KundenController extends NavigationController{
     public VBox vBoxKunden;
 
     public Autogarage autogarage;
 
+    /**
+     * Hiermit wird die Seite zur Verwaltung eines Kunden aufgerufen.
+     * @param kunde
+     */
     private void kundeVerwalten(Kunde kunde) {
 
     }
 
+    /**
+     * Hiermit wird ein neuer Kunde erfasst.
+     * @param actionEvent
+     */
+    private void kundeErfassen(ActionEvent actionEvent){
+
+    }
+
+    /**
+     * Hiermit wird die Liste aller Kunden gefüllt
+     */
     public void renderKunden(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -56,9 +77,5 @@ public class KundenController extends NavigationController{
                 vBoxKunden.getChildren().add(hBox);
             }
         }
-    }
-
-    public void mitarbeiterErfassen(ActionEvent actionEvent) {
-
     }
 }

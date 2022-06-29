@@ -97,7 +97,7 @@
                                     <Font name="Arial Black" size="24.0" />
                                  </font>
                               </Label>
-                              <Button layoutX="722.0" layoutY="19.0" mnemonicParsing="false" onAction="#mitarbeiterErfassen" text="Kunde erfassen" />
+                              <Button layoutX="722.0" layoutY="19.0" mnemonicParsing="false" onAction="#kundeErfassen" text="Kunde erfassen" />
                            </children>
                         </AnchorPane>
                         <VBox fx:id="vBoxKunden" prefHeight="559.0" prefWidth="878.0" style="-fx-background-color: #ffffffff;" />

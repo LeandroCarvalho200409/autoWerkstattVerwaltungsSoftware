@@ -16,6 +16,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Diese Klasse hier dient als Controller für die Homepage.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
 public class HelloController extends NavigationController implements Initializable {
     @FXML
     private VBox vBoxCarsPendent;
@@ -25,11 +31,20 @@ public class HelloController extends NavigationController implements Initializab
 
     private HelloApplication helloApplication;
 
+    /**
+     * Beim Aufstarten dieses Controllers wird als erstes die initialize Methode aufgerufen, welche aus der Interface Initializable stammt.
+     * @param url
+     * @param resourceBundle
+     */
     public void initialize(URL url, ResourceBundle resourceBundle){
         renderCarsPendent();
         renderCarsOnSale();
     }
 
+    /**
+     * Falls ein Button für die Verwaltung eines Auftrages geklickt wird, wird diese Methode aufgerufen, welche das Verwaltungsfenster aufruft.
+     * @param auftrag Dies ist der Auftrag, welcher verwaltet werden soll.
+     */
     public void auftragVerwalten(Auftrag auftrag){
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -52,6 +67,10 @@ public class HelloController extends NavigationController implements Initializab
         }
     }
 
+    /**
+     * Diese Methode wird aufgerufen um ein Verkaufsfahrzeug zu verwalten. Diese Methode ruft das Verwaltungsfenster des entsprechenden Objektes auf.
+     * @param verkaufsfahrzeug Dies ist der Fahrzeug, welcher verwaltet werden soll.
+     */
     public void verkaufsfahrzeugVerwalten(Verkaufsfahrzeug verkaufsfahrzeug){
         try {
             Autogarage autogarage = new Autogarage("Test");
@@ -74,6 +93,9 @@ public class HelloController extends NavigationController implements Initializab
         }
     }
 
+    /**
+     * Diese Methode erstellt die Liste aller Verkaufsfahrzeuge, welche noch nicht verkauft wurden.
+     */
     public void renderCarsOnSale(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();
@@ -113,6 +135,9 @@ public class HelloController extends NavigationController implements Initializab
         }
     }
 
+    /**
+     * Diese Methode erstellt die Liste aller Aufträge, welche noch nicht abgeschlossen wurden.
+     */
     public void renderCarsPendent(){
         Autogarage autogarage = new Autogarage("Test");
         autogarage.getData();

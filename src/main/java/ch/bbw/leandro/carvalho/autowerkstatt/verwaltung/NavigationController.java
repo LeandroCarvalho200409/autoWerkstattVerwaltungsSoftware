@@ -6,10 +6,20 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Diese Klasse hier dient als Controller für die Navigationsfunktion der Applikation.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
+
 public class NavigationController {
 
     private HelloApplication helloApplication;
 
+    /**
+     * Hiermit wird die Seite zum Anmelden wieder aufgerufen.
+     */
     public void logout(){
         try {
             Stage stage = this.helloApplication.getStage();
@@ -24,6 +34,9 @@ public class NavigationController {
         }
     }
 
+    /**
+     * Hiermit wird die Startseite der Applikation geöffnet.
+     */
     public void openHome(){
         try {
             Stage stage = this.helloApplication.getStage();
@@ -38,6 +51,9 @@ public class NavigationController {
         }
     }
 
+    /**
+     * Hiermit wird die Startseite der Mitarbeiter geöffnet.
+     */
     public void openMitarbeiter(){
         try {
             Stage stage = this.helloApplication.getStage();
@@ -54,6 +70,9 @@ public class NavigationController {
         }
     }
 
+    /**
+     * Hiermit wird die Startseite der Kunden geöffnet.
+     */
     public void openKunden(){
         try {
             Stage stage = this.helloApplication.getStage();
@@ -70,6 +89,9 @@ public class NavigationController {
         }
     }
 
+    /**
+     * Hiermit wird die Startseite der Fahrzeuge geöffnet.
+     */
     public void openFahrzeuge(){
         try {
             Stage stage = this.helloApplication.getStage();
@@ -86,6 +108,9 @@ public class NavigationController {
         }
     }
 
+    /**
+     * Hiermit wird die Startseite der Ersatzteile geöffnet.
+     */
     public void openErsatzteile(){
         try {
             Stage stage = this.helloApplication.getStage();
@@ -102,6 +127,9 @@ public class NavigationController {
         }
     }
 
+    /**
+     * Hiermit wird die Startseite der Aufträge geöffnet.
+     */
     public void openAuftraege(){
         try {
             Stage stage = this.helloApplication.getStage();

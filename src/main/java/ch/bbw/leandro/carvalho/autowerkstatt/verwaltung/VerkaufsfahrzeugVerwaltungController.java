@@ -3,7 +3,13 @@ package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
+
+/**
+ * Diese Klasse hier dient als Controller für die Verwaltung von Verkaufsfahrzeuge.
+ *
+ * @author Leandro Filipe Lourenço Carvalho
+ * @version 1.0
+ */
 
 public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
 
@@ -26,15 +32,28 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
     private Verkaufsfahrzeug verkaufsfahrzeug;
 
 
+    /**
+     * Diese Methode setzt generell den Text eines MenuButtons neu.
+     * @param menuButton
+     * @param menuItem
+     */
     public void setTextDropdownMenu(MenuButton menuButton, MenuItem menuItem){
         Label label = (Label) menuItem.getGraphic();
         menuButton.setText(label.getText());
     }
 
+    /**
+     * Diese Methode bewirkt, dass ein neuer Verkaufsfahrzeug eingesetzt wird.
+     * @param verkaufsfahrzeug
+     */
     public void setFahrzeug(Verkaufsfahrzeug verkaufsfahrzeug){
         this.verkaufsfahrzeug = verkaufsfahrzeug;
     }
 
+    /**
+     * Diese Methode speichert die Daten nach der Verwaltung eines Verkaufsfahrzeugs ein. Dabei werden die
+     * neuen Daten mit den alten verglichen.
+     */
     public void save(){
         int counter = 0;
         int index = 0;
@@ -91,6 +110,10 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
         autogarage.getData();
         this.verkaufsfahrzeug = (Verkaufsfahrzeug) autogarage.getFahrzeuge().get(index);
     }
+
+    /**
+     * Diese Methode bewirkt, dass ein Verkaufsfahrzeug entfernt wird.
+     */
     public void removeFahrzeug(){
         int counter = 0;
         for (Fahrzeug f:autogarage.getFahrzeuge()) {
@@ -105,6 +128,11 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
         autogarage.saveData();
         autogarage.getData();
     }
+
+    /**
+     * Mithilfe dieser Methode können die anfänglichen Werte eines Verkaufsfahrzeuges auf die entsprechenden Felder
+     * der GUI gesetzt.
+     */
     public void fillupData(){
         this.autogarage = new Autogarage("Test");
         autogarage.getData();
