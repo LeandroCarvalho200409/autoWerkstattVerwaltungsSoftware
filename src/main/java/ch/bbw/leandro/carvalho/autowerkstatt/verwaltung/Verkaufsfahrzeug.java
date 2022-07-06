@@ -41,6 +41,13 @@ public class Verkaufsfahrzeug extends Fahrzeug{
         this.gekauftDate = gekauftDate;
     }
 
+    public Verkaufsfahrzeug(String marke, String modell, String baureihe, int ccm, int ps, int anzPlaetze, String aufbau, String farbe, String farbencode, String vehicleIdentificationNumber, LocalDate ersteInverkehrssetzung, double preis, boolean verkauft, LocalDate gekauftDate) {
+        super(marke, modell, baureihe, ccm, ps, anzPlaetze, aufbau, farbe, farbencode, vehicleIdentificationNumber, ersteInverkehrssetzung);
+        Preis = preis;
+        this.verkauft = verkauft;
+        this.gekauftDate = gekauftDate;
+    }
+
     /**
      * Diese Methode bewirkt, dass man den Preis eines Fahrzeuges abholen kann.
      * @return Preis eines Fahrzeuges

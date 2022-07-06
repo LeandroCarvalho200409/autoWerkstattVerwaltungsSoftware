@@ -165,8 +165,25 @@ public class FahrzeugeController extends NavigationController{
      * Mit dieser Methode soll es möglich sein, ein neues Fahrzeug, nach dem Aufruf der entsprechenden Seite zu erfassen.
      * @param actionEvent
      */
+    @FXML
     public void openFahrzeugErfassen(ActionEvent actionEvent) {
-
+        try {
+            Autogarage autogarage = new Autogarage("Test");
+            autogarage.getData();
+            Stage stage = helloApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf_erfassen.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            VerkaufsfahrzeugVerwaltungController controller = fxmlLoader.getController();
+            controller.renderKundeDropdown();
+            String css = this.getClass().getResource("home.css").toExternalForm();
+            scene.getStylesheets().add(css);
+            stage.setScene(scene);
+            stage.setTitle("Fahrzeuge | Verkauf");
+            stage.setResizable(false);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**

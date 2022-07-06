@@ -2,6 +2,7 @@ package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 /**
@@ -129,11 +130,7 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
         autogarage.getData();
     }
 
-    /**
-     * Mithilfe dieser Methode können die anfänglichen Werte eines Verkaufsfahrzeuges auf die entsprechenden Felder
-     * der GUI gesetzt.
-     */
-    public void fillupData(){
+    public void renderKundeDropdown(){
         this.autogarage = new Autogarage("Test");
         autogarage.getData();
         for (Person person:autogarage.getPersonen()) {
@@ -153,6 +150,14 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
                 kundeDropdown.getItems().add(menuItem);
             }
         }
+    }
+
+    /**
+     * Mithilfe dieser Methode können die anfänglichen Werte eines Verkaufsfahrzeuges auf die entsprechenden Felder
+     * der GUI gesetzt.
+     */
+    public void fillupData(){
+        renderKundeDropdown();
         fieldAnzPlaetze.setText(""+verkaufsfahrzeug.getAnzPlaetze());
         fieldAufbau.setText(verkaufsfahrzeug.getAufbau());
         fieldBaureihe.setText(verkaufsfahrzeug.getBaureihe());
@@ -169,5 +174,32 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
         }
         dateGekauft.setValue(verkaufsfahrzeug.getGekauftDate());
         dateIVS.setValue(verkaufsfahrzeug.getErsteInverkehrssetzung());
+    }
+
+    @FXML
+    public void addVerkaufsfahrzeug(ActionEvent actionEvent){
+        autogarage.getData();
+
+        if(checkVerkauft.isArmed()){
+            Kunde kundeAuto = null;
+            for (Person person:autogarage.getPersonen()) {
+                if(person instanceof Kunde){
+                    Kunde kunde = (Kunde) person;
+                    String[] parts = kundeDropdown.getText().split(": ");
+                    if(kunde.getKundenNummer().equals(parts[1])){
+                        kundeAuto = kunde;
+                    }
+                }
+            }
+            Verkaufsfahrzeug verkaufsfahrzeug = new Verkaufsfahrzeug(fieldMarke.getText(), fieldModell.getText(), fieldBaureihe.getText(), Integer.parseInt(fieldCCM.getText()),
+                    Integer.parseInt(fieldPS.getText()), Integer.parseInt(fieldAnzPlaetze.getText()), fieldAufbau.getText(), fieldFarbe.getText()
+                    , fieldFarbenCode.getText(), fieldVIN.getText(), dateIVS.getValue(), Double.parseDouble(fieldPreis.getText()), checkVerkauft.isArmed(), kundeAuto, dateGekauft.getValue());
+        }else{
+            Verkaufsfahrzeug verkaufsfahrzeug = new Verkaufsfahrzeug(fieldMarke.getText(), fieldModell.getText(), fieldBaureihe.getText(), Integer.parseInt(fieldCCM.getText()),
+                    Integer.parseInt(fieldPS.getText()), Integer.parseInt(fieldAnzPlaetze.getText()), fieldAufbau.getText(), fieldFarbe.getText()
+                    , fieldFarbenCode.getText(), fieldVIN.getText(), dateIVS.getValue(), Double.parseDouble(fieldPreis.getText()), checkVerkauft.isArmed(), dateGekauft.getValue());
+        }
+        autogarage.getFahrzeuge().add(verkaufsfahrzeug);
+        autogarage.saveData();
     }
 }

@@ -408,7 +408,10 @@ public class Autogarage {
         try {
             FileReader fr = new FileReader("data.txt");
             BufferedReader br = new BufferedReader(fr);
-            String line = br.readLine();
+            String line = "";
+            while((line = br.readLine()) == null){
+                line = br.readLine();
+            }
             JSONObject data = new JSONObject(line);
             System.out.println(data);
             JSONObject contentJSON = (JSONObject) data.get(this.name);

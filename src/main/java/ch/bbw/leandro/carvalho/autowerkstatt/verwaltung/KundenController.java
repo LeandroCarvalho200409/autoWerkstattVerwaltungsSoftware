@@ -2,6 +2,7 @@ package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -31,6 +32,7 @@ public class KundenController extends NavigationController{
      * Hiermit wird ein neuer Kunde erfasst.
      * @param actionEvent
      */
+    @FXML
     private void kundeErfassen(ActionEvent actionEvent){
 
     }

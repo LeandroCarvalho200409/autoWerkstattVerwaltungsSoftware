@@ -55,6 +55,10 @@ public class AuftraegeVerwaltungController extends NavigationController{
     @FXML
     private DatePicker dateZuErledigenBis;
 
+    public int getFieldPreis(){
+        return Integer.parseInt(fieldPreis.getText());
+    }
+
     /**
      * Diese Methode wird generell gebraucht um den Text eines MenuButtons zu ändern.
      * @param menuButton
