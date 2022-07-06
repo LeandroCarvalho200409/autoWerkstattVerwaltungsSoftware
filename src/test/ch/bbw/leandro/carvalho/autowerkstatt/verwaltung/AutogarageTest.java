@@ -1,3 +1,5 @@
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+
 import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;

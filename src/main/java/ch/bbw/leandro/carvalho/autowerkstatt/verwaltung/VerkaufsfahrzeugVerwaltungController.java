@@ -43,6 +43,10 @@ public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
         menuButton.setText(label.getText());
     }
 
+    public String getFieldVINText(){
+        return fieldVIN.getText();
+    }
+
     /**
      * Diese Methode bewirkt, dass ein neuer Verkaufsfahrzeug eingesetzt wird.
      * @param verkaufsfahrzeug
