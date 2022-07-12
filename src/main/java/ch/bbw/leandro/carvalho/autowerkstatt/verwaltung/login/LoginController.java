@@ -1,5 +1,7 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.login;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Autogarage;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.MainApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -27,7 +29,7 @@ public class LoginController {
     @FXML
     private Label errorLabel;
 
-    private HelloApplication helloApplication;
+    private MainApplication mainApplication;
 
     /**
      * In dieser Methode wird die Anmeldung eines Users getätigt. Falls die Anmeldedaten nicht übereinstimmen oder schlichtweg nicht existieren, wird die
@@ -39,10 +41,10 @@ public class LoginController {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
             if(autogarage.anmelden(username, pwdField.getText()) == true){
-                Stage stage = helloApplication.getStage();
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+                Stage stage = mainApplication.getStage();
+                FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("hello-view.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
-                String css = this.getClass().getResource("home.css").toExternalForm();
+                String css = this.getClass().getResource("/ch/bbw/leandro/carvalho/autowerkstatt/verwaltung/home.css").toExternalForm();
                 scene.getStylesheets().add(css);
                 stage.close();
                 stage.setScene(scene);

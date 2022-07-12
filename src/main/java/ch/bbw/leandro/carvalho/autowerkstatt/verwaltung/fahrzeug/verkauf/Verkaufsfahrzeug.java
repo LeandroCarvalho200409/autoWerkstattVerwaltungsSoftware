@@ -1,4 +1,7 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf;
+
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.Fahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.kunde.Kunde;
 
 import java.time.LocalDate;
 
@@ -9,7 +12,7 @@ import java.time.LocalDate;
  * @version 1.0
  */
 
-public class Verkaufsfahrzeug extends Fahrzeug{
+public class Verkaufsfahrzeug extends Fahrzeug {
     private double Preis;
     private boolean verkauft;
     private Kunde verkauftAn;

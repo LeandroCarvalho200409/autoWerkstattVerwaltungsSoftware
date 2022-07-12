@@ -1,5 +1,9 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.*;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.ersatzteil.Ersatzteil;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.Fahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.Mitarbeiter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,7 +17,7 @@ import javafx.scene.layout.VBox;
  * @author Leandro Filipe Lourenço Carvalho
  * @version 1.0
  */
-public class AuftraegeVerwaltungController extends NavigationController{
+public class AuftraegeVerwaltungController extends NavigationController {
 
     private Auftrag auftrag;
 

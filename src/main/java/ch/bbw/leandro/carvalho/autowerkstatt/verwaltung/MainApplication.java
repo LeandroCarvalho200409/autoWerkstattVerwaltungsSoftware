@@ -6,9 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Diese ist die Main Klasse, welche einerseits die initiale Autogarage erstellt, aber auch das Login-Fenster aufruft.
@@ -17,7 +14,7 @@ import java.util.Date;
  * @version 1.0
  */
 
-public class HelloApplication extends Application {
+public class MainApplication extends Application {
 
     private static Stage stage;
 
@@ -29,7 +26,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         this.stage = stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
         Scene loginStart = new Scene(fxmlLoader.load());
         stage.setTitle("Login");
         stage.setScene(loginStart);

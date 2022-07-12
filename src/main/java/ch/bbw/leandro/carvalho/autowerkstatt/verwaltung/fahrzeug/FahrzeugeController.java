@@ -1,5 +1,12 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.*;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.AuftraegeVerwaltungController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.Auftrag;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.kunde.Kundenfahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf.Verkaufsfahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf.VerkaufsfahrzeugVerwaltungController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.Mitarbeiter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,9 +27,9 @@ import java.io.IOException;
  * @version 1.0
  */
 
-public class FahrzeugeController extends NavigationController{
+public class FahrzeugeController extends NavigationController {
 
-    private HelloApplication helloApplication;
+    private MainApplication mainApplication;
 
     @FXML
     private VBox vBoxCarsPendent;
@@ -44,13 +51,13 @@ public class FahrzeugeController extends NavigationController{
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftraege_verwaltung.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("auftraege_verwaltung.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             AuftraegeVerwaltungController controller = fxmlLoader.getController();
             controller.setAuftrag(auftrag);
             controller.fillupData();
-            String css = this.getClass().getResource("home.css").toExternalForm();
+            String css = this.getClass().getResource("/ch/bbw/leandro/carvalho/autowerkstatt/verwaltung/home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.close();
             stage.setScene(scene);
@@ -121,13 +128,13 @@ public class FahrzeugeController extends NavigationController{
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fahrzeug_verkauf.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             FahrzeugeController controller = fxmlLoader.getController();
             controller.renderCarSoldPendent();
             controller.renderCarsSold();
-            String css = this.getClass().getResource("home.css").toExternalForm();
+            String css = this.getClass().getResource("/ch/bbw/leandro/carvalho/autowerkstatt/verwaltung/home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);
             stage.setTitle("Fahrzeuge | Verkauf");
@@ -145,12 +152,12 @@ public class FahrzeugeController extends NavigationController{
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_kunde.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fahrzeug_kunde.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             FahrzeugeController controller = fxmlLoader.getController();
             controller.renderCarsKunden();
-            String css = this.getClass().getResource("home.css").toExternalForm();
+            String css = this.getClass().getResource("/ch/bbw/leandro/carvalho/autowerkstatt/verwaltung/home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);
             stage.setTitle("Fahrzeuge | Kunden");
@@ -170,12 +177,12 @@ public class FahrzeugeController extends NavigationController{
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf_erfassen.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fahrzeug_verkauf_erfassen.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             VerkaufsfahrzeugVerwaltungController controller = fxmlLoader.getController();
             controller.renderKundeDropdown();
-            String css = this.getClass().getResource("home.css").toExternalForm();
+            String css = this.getClass().getResource("/ch/bbw/leandro/carvalho/autowerkstatt/verwaltung/home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.setScene(scene);
             stage.setTitle("Fahrzeuge | Verkauf");
@@ -194,13 +201,13 @@ public class FahrzeugeController extends NavigationController{
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf_verwaltung.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fahrzeug_verkauf_verwaltung.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             VerkaufsfahrzeugVerwaltungController controller = fxmlLoader.getController();
             controller.setFahrzeug(verkaufsfahrzeug);
             controller.fillupData();
-            String css = this.getClass().getResource("home.css").toExternalForm();
+            String css = this.getClass().getResource("/ch/bbw/leandro/carvalho/autowerkstatt/verwaltung/home.css").toExternalForm();
             scene.getStylesheets().add(css);
             stage.close();
             stage.setScene(scene);

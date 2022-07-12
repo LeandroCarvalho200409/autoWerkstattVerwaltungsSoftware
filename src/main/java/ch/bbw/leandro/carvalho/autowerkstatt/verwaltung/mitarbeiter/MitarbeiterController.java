@@ -1,8 +1,10 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Autogarage;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.NavigationController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Person;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -15,7 +17,7 @@ import javafx.scene.layout.VBox;
  * @version 1.0
  */
 
-public class MitarbeiterController extends NavigationController{
+public class MitarbeiterController extends NavigationController {
     public VBox vBoxMitarbeiter;
 
     public Autogarage autogarage;

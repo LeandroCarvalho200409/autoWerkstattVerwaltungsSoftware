@@ -1,4 +1,4 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug;
 
 import java.time.LocalDate;
 

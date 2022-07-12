@@ -1,5 +1,8 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.ersatzteil;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Autogarage;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.MainApplication;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.NavigationController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,7 +22,7 @@ public class ErsatzteileController extends NavigationController {
     @FXML
     private VBox vBoxErsatzteile;
     private Autogarage autogarage;
-    private HelloApplication helloApplication;
+    private MainApplication mainApplication;
 
     /**
      * Mithilfe dieser Methode wird die Seite zum Verwalten eines Ersatzteils aufgerufen.

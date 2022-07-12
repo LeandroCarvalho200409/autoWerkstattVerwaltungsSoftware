@@ -1,5 +1,12 @@
 package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.Auftrag;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.ersatzteil.Ersatzteil;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.Fahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.kunde.Kundenfahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf.Verkaufsfahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.kunde.Kunde;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.Mitarbeiter;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -8,8 +15,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * Dies ist die Hauptklasse der ganzen Applikation. Diese Klasse verwaltet eine ganze Autogarage.

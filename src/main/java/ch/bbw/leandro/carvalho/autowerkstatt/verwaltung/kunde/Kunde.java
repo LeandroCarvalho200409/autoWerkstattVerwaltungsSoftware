@@ -1,4 +1,7 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.kunde;
+
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Adresse;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Person;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -10,7 +13,7 @@ import java.util.Date;
  * @version 1.0
  */
 
-public class Kunde extends Person{
+public class Kunde extends Person {
     private String kundenNummer;
     private LocalDate kundeSeit;
 

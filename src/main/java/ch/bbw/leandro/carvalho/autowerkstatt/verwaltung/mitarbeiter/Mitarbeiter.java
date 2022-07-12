@@ -1,4 +1,7 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter;
+
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Adresse;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Person;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -13,7 +16,7 @@ import java.time.LocalDate;
  * @version 1.0
  */
 
-public class Mitarbeiter extends Person{
+public class Mitarbeiter extends Person {
     private String benutzername;
     private String passwort;
     private LocalDate eintrittsDatum;

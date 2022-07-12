@@ -1,5 +1,12 @@
 package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.AuftraegeVerwaltungController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.Auftrag;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.Fahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.kunde.Kundenfahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf.Verkaufsfahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf.VerkaufsfahrzeugVerwaltungController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.Mitarbeiter;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,14 +29,14 @@ import java.util.ResourceBundle;
  * @author Leandro Filipe Lourenço Carvalho
  * @version 1.0
  */
-public class HelloController extends NavigationController implements Initializable {
+public class MainController extends NavigationController implements Initializable {
     @FXML
     private VBox vBoxCarsPendent;
 
     @FXML
     private VBox vBoxCarsOnSale;
 
-    private HelloApplication helloApplication;
+    private MainApplication mainApplication;
 
     /**
      * Beim Aufstarten dieses Controllers wird als erstes die initialize Methode aufgerufen, welche aus der Interface Initializable stammt.
@@ -49,8 +56,8 @@ public class HelloController extends NavigationController implements Initializab
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftraege_verwaltung.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("auftraege_verwaltung.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             AuftraegeVerwaltungController controller = fxmlLoader.getController();
             controller.setAuftrag(auftrag);
@@ -75,8 +82,8 @@ public class HelloController extends NavigationController implements Initializab
         try {
             Autogarage autogarage = new Autogarage("Test");
             autogarage.getData();
-            Stage stage = helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_verkauf_verwaltung.fxml"));
+            Stage stage = mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fahrzeug_verkauf_verwaltung.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             VerkaufsfahrzeugVerwaltungController controller = fxmlLoader.getController();
             controller.setFahrzeug(verkaufsfahrzeug);

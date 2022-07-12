@@ -1,5 +1,10 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.verkauf;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Autogarage;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.NavigationController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.Person;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.Fahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.kunde.Kunde;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,7 +17,7 @@ import javafx.scene.control.*;
  * @version 1.0
  */
 
-public class VerkaufsfahrzeugVerwaltungController extends NavigationController{
+public class VerkaufsfahrzeugVerwaltungController extends NavigationController {
 
     public TextField fieldMarke;
     public TextField fieldBaureihe;

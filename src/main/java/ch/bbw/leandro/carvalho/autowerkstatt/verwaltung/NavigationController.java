@@ -1,5 +1,10 @@
 package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.AuftraegeController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.ersatzteil.ErsatzteileController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.kunde.KundenController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.MitarbeiterController;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.FahrzeugeController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -15,15 +20,15 @@ import java.io.IOException;
 
 public class NavigationController {
 
-    private HelloApplication helloApplication;
+    private MainApplication mainApplication;
 
     /**
      * Hiermit wird die Seite zum Anmelden wieder aufgerufen.
      */
     public void logout(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("login.fxml"));
             Scene loginStart = new Scene(fxmlLoader.load());
             stage.setTitle("Login");
             stage.setScene(loginStart);
@@ -39,8 +44,8 @@ public class NavigationController {
      */
     public void openHome(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("hello-view.fxml"));
             Scene home = new Scene(fxmlLoader.load());
             stage.setTitle("Home");
             stage.setScene(home);
@@ -56,8 +61,8 @@ public class NavigationController {
      */
     public void openMitarbeiter(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("mitarbeiter_home.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("mitarbeiter_home.fxml"));
             Scene mitarbeiterHome = new Scene(fxmlLoader.load());
             MitarbeiterController controller = fxmlLoader.getController();
             controller.renderMitarbeiter();
@@ -75,8 +80,8 @@ public class NavigationController {
      */
     public void openKunden(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("kunden_home.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("kunden_home.fxml"));
             Scene kundenHome = new Scene(fxmlLoader.load());
             KundenController controller = fxmlLoader.getController();
             controller.renderKunden();
@@ -94,8 +99,8 @@ public class NavigationController {
      */
     public void openFahrzeuge(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("fahrzeug_home.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("fahrzeug_home.fxml"));
             Scene fahrzeugHome = new Scene(fxmlLoader.load());
             FahrzeugeController controller = fxmlLoader.getController();
             controller.renderCarsPendent();
@@ -113,8 +118,8 @@ public class NavigationController {
      */
     public void openErsatzteile(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("ersatzteile_home.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("ersatzteile_home.fxml"));
             Scene ersatzteileHome = new Scene(fxmlLoader.load());
             ErsatzteileController controller = fxmlLoader.getController();
             controller.renderErsatzteile();
@@ -132,8 +137,8 @@ public class NavigationController {
      */
     public void openAuftraege(){
         try {
-            Stage stage = this.helloApplication.getStage();
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("auftaege_home.fxml"));
+            Stage stage = this.mainApplication.getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("auftaege_home.fxml"));
             Scene auftraegeHome = new Scene(fxmlLoader.load());
             AuftraegeController controller = fxmlLoader.getController();
             stage.setTitle("Aufträge | Home");

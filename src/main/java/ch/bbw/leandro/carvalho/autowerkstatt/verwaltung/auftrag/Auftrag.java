@@ -1,4 +1,9 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag;
+
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.*;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.ersatzteil.Ersatzteil;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.fahrzeug.Fahrzeug;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.Mitarbeiter;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

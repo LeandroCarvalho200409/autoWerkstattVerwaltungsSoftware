@@ -1,4 +1,4 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.ersatzteil;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,8 @@
 package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
 
-import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.*;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.auftrag.Auftrag;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.kunde.Kunde;
+import ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.mitarbeiter.Mitarbeiter;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

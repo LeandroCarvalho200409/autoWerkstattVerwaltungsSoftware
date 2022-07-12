@@ -1,4 +1,4 @@
-package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung;
+package ch.bbw.leandro.carvalho.autowerkstatt.verwaltung.login;
 
 /**
  * Diese Exception wird aufgerufen, falls beim Anmelden ein Fehler auftritt.
